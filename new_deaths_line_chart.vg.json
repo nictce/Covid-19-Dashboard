@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": "Trend of COVID-19 Deaths Over Time",
+  "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
+  "transform": [
+    {"filter": "datum.location != \"World\""},
+    {"filter": "datum.location != \"Asia\""},
+    {"filter": "datum.location != \"Europe\""},
+    {"filter": "datum.location != \"North America\""},
+    {"filter": "datum.location != \"South America\""},
+    {"filter": "datum.location != \"European Union\""},
+    {"filter": "datum.location != \"Africa\""}],
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "date", "type": "temporal"},
+    "y": {"field": "new_deaths_smoothed", "type": "quantitative"},
+    "color": {"field": "location", "type": "nominal"},
+    "tooltip": [
+      {"field": "location", "type": "nominal", "title": "Country"},
+      {"field": "date", "type": "temporal", "title": "Date"},
+      {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths (Smoothed)"}
+    ]
+  }
+}
