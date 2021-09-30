@@ -1,0 +1,18 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Trend of COVID-19 Deaths Over Time",
+    "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
+    "transform": [{"filter": {"field": "total_deaths", "range": [100000, 10000000]}}],
+    "mark": "line",
+    "encoding": {
+      "x": {"field": "date", "type": "temporal"},
+      "y": {"field": "total_deaths", "type": "quantitative"},
+      "color": {"field": "location", "type": "nominal"},
+      "tooltip": [
+        {"field": "location", "type": "nominal", "title": "Country"},
+        {"field": "date", "type": "temporal", "title": "Date"},
+        {"field": "total_deaths", "type": "quantitative", "title": "Total Deaths"}
+      ]
+    }
+  }
+  
