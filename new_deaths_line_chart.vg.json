@@ -11,7 +11,8 @@
     {"filter": "datum.location != \"North America\""},
     {"filter": "datum.location != \"South America\""},
     {"filter": "datum.location != \"European Union\""},
-    {"filter": "datum.location != \"Africa\""}],
+    {"filter": "datum.location != \"Africa\""},
+    {"filter": "datum.new_deaths_smoothed >= 0"}],
   "mark": "line",
   "encoding": {
     "x": {"field": "date", "type": "temporal"},
