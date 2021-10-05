@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A bar graph showing the scores of the top 5 students. This shows an example of the window transform, for how the top K (5) can be filtered, and also how a rank can be computed for each student.",
+    "data": {
+        "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
+    },
+    "transform": [
+        {
+            "calculate": "toNumber(datum.total_deaths_per_million)",
+            "as": "Total Deaths Per Million"
+        },
+      {
+        "window": [{
+          "op": "rank",
+          "as": "rank"
+        }],
+        "sort": [{ "field": "Total Deaths Per Million", "order": "descending" }]
+      }, {
+        "filter": "datum.rank <= 10"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+          "field": "Total Deaths Per Million",
+          "type": "quantitative"
+      },
+      "y": {
+          "field": "location",
+          "type": "nominal",
+          "sort": {"field": "Total Deaths Per Million", "op": "average", "order":"descending"}
+      },
+      "tooltip": [
+        {"field": "Total Deaths Per Million", "type": "quantitative"},
+        {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"}
+      ]
+    }
+  }
+  
