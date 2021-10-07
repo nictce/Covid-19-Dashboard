@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "COVID-19 Total Deaths Per Million Population",
-    "repeat": {"column": ["human_development_index", "life_expectancy"]},
+    "repeat": {"column": ["human_development_index"]},
     "resolve": {"scale": {"color": "independent"}},
     "spec": {
       "width": 380,
