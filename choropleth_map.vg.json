@@ -15,7 +15,7 @@
           "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
         },
         "key": "iso_code",
-        "fields": ["total_deaths_per_million", "date"]
+        "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred"]
       }
     },
     {
@@ -29,16 +29,22 @@
     "color": {
       "field": "Total Deaths Per Million",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": {"type": "log", "scheme": "reds"}
     },
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+      {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"},
       {
         "field": "total_deaths_per_million",
         "type": "quantitative",
         "title": "Total Deaths Per Million"
       },
-      {"field": "date", "title": "Date"}
+      {
+        "field": "people_fully_vaccinated_per_hundred",
+        "type": "quantitative",
+        "title": "Percentage Fully Vaccinated"
+      },
+      {"field": "last_updated_date", "title": "Date Updated"}
     ]
   }
 }
