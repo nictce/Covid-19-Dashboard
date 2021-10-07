@@ -22,7 +22,7 @@
   "encoding": {
     "x": {"field": "human_development_index", "type": "quantitative"},
     "y": {"field": "total_deaths_per_million", "type": "quantitative", "axis": {"tickCount": 6}, "scale": {"type": "symlog"}},
-    "color": {"field": "continent", "type": "nominal"},
+    "color": {"field": "continent", "type": "nominal", "scale": {"scheme": "tableau10"}},
     "opacity": { "condition": {"param": "continent_highlight", "value": 0.8}, 
     "value": 0.2
  },
