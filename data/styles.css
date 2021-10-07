@@ -11,9 +11,12 @@ body{
     max-width: 850px;    
     background-color: white;   
     margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
     padding: 50px;
     padding-top: 35px;
-    border: 3px
+    border: 3px;
+    border-radius: 7px;
 }
 .vis-container{
     width: 100%;
