@@ -4,8 +4,6 @@
     "repeat": {"column": ["human_development_index"]},
     "resolve": {"scale": {"color": "independent"}},
     "spec": {
-      "width": 380,
-      "height": 200,
       "data": {
         "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
