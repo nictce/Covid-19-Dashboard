@@ -13,34 +13,35 @@
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 1000000000,
-        "step": 1000000,
-        "name": "Minimum Population: "
+        "max": 5000000,
+        "step": 10,
+        "name": "Total Cases: "
       }
     }
   ],
   "transform": [
     {"filter": "datum.continent != \"\""},
     {"filter": "datum.human_development_index != \"\""},
-    {"filter": "datum.population > Population_Above"}
+    {"filter": "datum.total_cases > Population_Above"},
+    {"calculate": "toNumber(datum.total_deaths) / toNumber(datum.total_cases)", "as": "Mortality Rate"},
+    {"calculate": "if(datum.total_deaths_per_million==0, 0, datum.total_deaths_per_million)", "as": "Total Deaths Per Million"},
+    {"calculate": "datum.total_deaths_per_million + 1", "as": "Total Deaths Per Million "}
   ],
   "encoding": {
     "x": {
       "field": "human_development_index",
       "type": "quantitative",
-      "axis": {"tickCount": 6},
-      "scale": {"type": "symlog"}
+      "title": "Human Development Index"
     },
     "y": {
-      "field": "total_deaths_per_million",
+      "field": "Total Deaths Per Million ",
       "type": "quantitative",
-      "axis": {"tickCount": 6},
-      "scale": {"type": "symlog"}
+      "axis": {"tickCount": 4},
+      "scale": {"type": "log"}
     }
   },
   "layer": [
     {
-      "name": "top",
       "selection": {
         "continent_highlight": {
           "type": "multi",
@@ -71,17 +72,15 @@
         },
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
-          {"field": "human_development_index"},
-          {
-            "field": "total_deaths",
-            "type": "quantitative",
-            "title": "Total Deaths"
-          }
+          {"field": "population", "type": "quantitative","title": "Population"},
+          {"field": "human_development_index", "title": "Human Development Index"},
+          {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
+          {"field": "Total Deaths Per Million"}
+
         ]
       }
     },
     {
-      "name": "bottom",
       "mark": {
         "type": "text",
         "align": "right",
@@ -95,22 +94,11 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum.location == 'China' || datum.location == 'Singapore' || datum.location == 'Australia' || datum.location == 'New Zealand' || datum.location == 'Italy' || datum.location == 'Yemen' ||datum.location == 'United States'",
+            "test": "datum.location == 'China' || datum.location == 'Malaysia' || datum.location == 'Australia' || datum.location == 'Peru' || datum.location == 'South Africa' || datum.location == 'Nigeria' ||datum.location == 'United States'",
             "value": 1
           },
           "value": 0
-        },
-        "tooltip": [
-          {"field": "location", "type": "nominal"},
-          {"field": "total_cases", "type": "quantitative", "format": ","},
-          {"field": "total_deaths", "type": "quantitative", "format": ","},
-          {"field": "gdp_per_capita", "type": "quantitative", "format": ","},
-          {
-            "field": "total_cases_per_million",
-            "type": "quantitative",
-            "format": ".2f"
-          }
-        ]
+        }
       }
     }
   ]
