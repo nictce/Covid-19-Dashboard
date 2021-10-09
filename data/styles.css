@@ -36,6 +36,7 @@ body{
 }
 .pure-g{
     margin-bottom: 25px;
+    justify-content: center;
 }
 .small-font{
     font-size: 14px;
