@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A bar graph showing the scores of the top 5 students. This shows an example of the window transform, for how the top K (5) can be filtered, and also how a rank can be computed for each student.",
+  "title": "Top 10 Countries with Highest Deaths Per Million",
   "data": {
       "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
   },
@@ -27,6 +27,7 @@
     },
     "y": {
         "field": "location",
+        "title": "Country",
         "type": "nominal",
         "sort": {"field": "Total Deaths Per Million", "op": "average", "order":"descending"}
     },

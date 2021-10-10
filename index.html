@@ -85,7 +85,7 @@
 
         <div class="pure-g">
             <div class="pure-u-1-1">
-                <div id="scatter_cases_deaths" class="vis-container"></div>
+                <div id="bubble_cases_deaths" class="vis-container"></div>
             </div>
         </div>  
 
@@ -135,7 +135,7 @@
         var vg_4 = "bar_top10_deaths.vg.json";
         var vg_5 = "line_new_deaths.vg.json";
         var vg_6 = "heatmap_daily_cases.vg.json";
-        var vg_7 = "scatter_cases_deaths.vg.json";
+        var vg_7 = "bubble_cases_deaths.vg.json";
         var vg_8 = "line_total_deaths.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -145,7 +145,7 @@
         vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_new_deaths", vg_5).then(function(result) {}).catch(console.error);
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
-        vegaEmbed("#scatter_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bubble_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
         
     </script>
