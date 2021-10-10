@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Cumulative COVID-19 Deaths Over Time",
+  "width": 400,
   "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
   "transform": [
     {"filter": "datum.continent != \"\""}
