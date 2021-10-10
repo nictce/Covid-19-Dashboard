@@ -8,8 +8,8 @@
     ],
   "mark": "line",
   "encoding": {
-    "x": {"field": "date", "type": "temporal"},
-    "y": {"field": "total_deaths", "type": "quantitative"},
+    "x": {"field": "date", "type": "temporal", "title": "Date"},
+    "y": {"field": "total_deaths", "type": "quantitative", "title": "Total Deaths"},
     "color": {"field": "location", "type": "nominal"},
     "tooltip": [
       {"field": "location", "type": "nominal", "title": "Country"},
