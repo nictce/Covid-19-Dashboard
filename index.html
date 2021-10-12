@@ -245,7 +245,7 @@
             bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", bubblePlot)
             
-            linePlot["transform"][2] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
+            linePlot["transform"][2]["filter"] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
             linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
             linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
             linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
