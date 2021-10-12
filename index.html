@@ -196,7 +196,7 @@
         let bubble = "bubble_plot"
         let button = "Cases"
         let bubblePlot = getJson("./json/bubble_hdi_deaths.vg.json")
-        // let choropleth = getJson("./json/bubble_hdi_deaths.vg.json")
+        let choropleth = getJson("./json/choro_world_cases.vg.json")
         
         function toggleIdiom(id, cls) {
             var target = document.getElementById(id);
@@ -235,6 +235,7 @@
         }
 
         function changeMapOption() {
+            choropleth = getJson("./json/choro_world_cases.vg.json")
             let option = document.getElementById("map_option").value
             console.log(option)
             if(option == "Total " && button == "Vaccinations"){
@@ -243,6 +244,7 @@
                 mapField = option + button + " Per Million"
             }
             console.log(mapField)
+            // choropleth[""]
 
 
             // bubblePlot["encoding"]["y"]["field"] = bubbleField
@@ -251,6 +253,7 @@
         }
 
         function changeBubbleOption() {
+            bubblePlot = getJson("./json/bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
             console.log(bubblePlot["encoding"]["x"]["field"])
             console.log(bubblePlot["layer"]["encoding"]["tooltip"][2]["field"])
