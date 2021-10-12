@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
+  },
+  "transform": [
+    {"filter": "datum.continent != ''"},
+    {"filter": "datum.new_deaths_smoothed >= 0"},
+    {"filter": "datum.location != ''"},
+    {"filter": "datum.location != ''"},
+    {"filter": "datum.location != ''"},
+    {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"}
+  ],
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 240,
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "date", "title": "Date", "type": "temporal",
+          "scale": {"domain": {"param": "brush"}}, "axis": {"title": "", "tickCount": 10}},
+        "y": {"field": "New Deaths", "type": "quantitative"},
+        "color": {"field": "location", "type": "nominal", "legend": null},
+        "tooltip": [
+          {"field": "location", "type": "nominal", "title": "Country"},
+          {"field": "date", "type": "temporal", "title": "Date"},
+          {"field": "New Deaths", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "width": "container",
+      "height": 60,
+      "mark": "line",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "date", "title": "Date", "type": "temporal", "axis": {"tickCount": 10}},
+        "y": {"field": "New Deaths", "type": "quantitative", "axis": {"tickCount": 3, "grid": false}
+        },
+        "color": {"field": "location", "type": "nominal", "legend": null},
+        "tooltip": [
+          {"field": "location", "type": "nominal", "title": "Country"},
+          {"field": "date", "type": "temporal", "title": "Date"},
+          {"field": "New Deaths", "type": "quantitative"}
+        ]
+      }
+    }
+  ]
+}
