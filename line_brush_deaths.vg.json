@@ -6,6 +6,7 @@
   "transform": [
     {"filter": "datum.continent != ''"},
     {"filter": "datum.new_deaths_smoothed >= 0"},
+    {"filter": "datum.new_vaccinations_smoothed >= 0"},
     {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"},
     {"calculate": "datum.new_cases_smoothed", "as": "New Cases"},
     {"calculate": "datum.new_vaccinations_smoothed", "as": "New Vaccinations"}
@@ -56,6 +57,7 @@
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
+          {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
           {"field": "New Cases", "type": "quantitative"}
         ]
       }
