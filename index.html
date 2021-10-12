@@ -51,10 +51,10 @@
             </div>
             <div class="pure-u-3-8"></div>
             <div class="pure-u-1-8 pure-form" style="justify-content: right;">
-                <select id="map_option" class="pure-input-1-1" onchange="changeMapOption()" style="min-width: 130px;">
+                <!-- <select id="map_option" class="pure-input-1-1" onchange="changeMapOption()" style="min-width: 130px;">
                     <option value="Total ">Total</option>
                     <option value="New ">New</option>
-                </select>
+                </select> -->
             </div>
         </div>
         
@@ -149,6 +149,12 @@
                 <div id="line_total_deaths"  class="vis-container"></div>
             </div>
         </div>   -->
+
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="choro_line_deaths" class="vis-container"></div>
+            </div>
+        </div>
     </div>
 
 
@@ -195,6 +201,7 @@
         var vg_11 = "line_brush_cases.vg.json";
         var vg_12 = "line_brush_deaths.vg.json";
         var vg_13 = "line_brush_vax.vg.json";
+        var vg_14 = "choro_line_deaths.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
@@ -210,6 +217,7 @@
         vegaEmbed("#line_brush_cases", vg_11).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_brush_deaths", vg_12).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_brush_vax", vg_13).then(function(result) {}).catch(console.error);
+        vegaEmbed("#choro_line_deaths", vg_14).then(function(result) {}).catch(console.error);
 
     </script>
 
