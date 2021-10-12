@@ -7,33 +7,39 @@
   },
   "params": [
     {
-      "name": "Population_Above",
+      "name": "total_cases_above",
       "value": 0,
       "bind": {
         "input": "range",
-        "min": 0,
-        "max": 5000000,
-        "step": 10,
+        "min": 0, "max": 5000000, "step": 100,
         "name": "Total Cases: "
       }
     }
   ],
   "transform": [
     {"filter": "datum.continent != \"\""},
+    {"filter": "datum.total_cases > total_cases_above"},
+
+    {"calculate": "datum.total_cases_per_million + 1", "as": "Total Cases Per Million"},
+    {"calculate": "datum.total_deaths_per_million + 1", "as": "Total Deaths Per Million"},
+    {"calculate": "datum.people_fully_vaccinated_per_hundred + 1", "as": "Fully Vaccinated Percentage"},
+
     {"filter": "datum.human_development_index != \"\""},
-    {"filter": "datum.total_cases > Population_Above"},
-    {"calculate": "toNumber(datum.total_deaths) / toNumber(datum.total_cases)", "as": "Mortality Rate"},
-    {"calculate": "if(datum.total_deaths_per_million==0, 0, datum.total_deaths_per_million)", "as": "Total Deaths Per Million"},
-    {"calculate": "datum.total_deaths_per_million + 1", "as": "Total Deaths Per Million "}
+    {"calculate": "datum.human_development_index", "as": "Human Development Index"},
+    {"calculate": "datum.gdp_per_capita", "as": "GDP Per Capita"},
+    {"calculate": "datum.life_expectancy", "as": "Life Expectancy"},
+    {"calculate": "datum.population_density", "as": "Population Density"},
+    {"calculate": "datum.stringency_index", "as": "Stringency Index"},
+
+    {"calculate": "toNumber(datum.total_deaths) / toNumber(datum.total_cases) * 100", "as": "Mortality Rate"}
   ],
   "encoding": {
     "x": {
-      "field": "human_development_index",
-      "type": "quantitative",
-      "title": "Human Development Index"
+      "field": "Human Development Index",
+      "type": "quantitative"
     },
     "y": {
-      "field": "Total Deaths Per Million ",
+      "field": "Total Deaths Per Million",
       "type": "quantitative",
       "axis": {"tickCount": 4},
       "scale": {"type": "log"}
@@ -72,9 +78,9 @@
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "population", "type": "quantitative","title": "Population"},
-          {"field": "human_development_index", "title": "Human Development Index"},
+          {"field": "Human Development Index", "type": "quantitative"},
           {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
-          {"field": "Total Deaths Per Million"}
+          {"field": "Total Deaths Per Million", "type": "quantitative"}
 
         ]
       }
