@@ -43,4 +43,6 @@ body{
 }
 .pure-button{
     border-radius: 5px;
+    /* display: inline-block; */
+    min-width: 150px;
 }

@@ -40,25 +40,22 @@
 
     <div class="page">
 
-        <div class="pure-g" style="justify-content: left;">
-            <div class="pure-button-group" role="group">
-                <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro')" style="width: 100px;">Cases</button>
-                <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro')">Deaths</button>
-                <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro')">Vaccinations</button>
+        <div class="pure-g">
+            <div class="pure-u-1-2" style="justify-content: left;">
+                <div class="pure-button-group" role="group">
+                    <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro'); clickTypeButton('cases')" style="width: 100px;">Cases</button>
+                    <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro'); clickTypeButton('deaths')">Deaths</button>
+                    <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro'); clickTypeButton('vax')">Vaccinations</button>
+                </div>
+            </div>
+            <div class="pure-u-3-8"></div>
+            <div class="pure-u-1-8 pure-form" style="justify-content: right;">
+                <select id="map_option" class="pure-input-1-1" onchange="changeMapOption()" style="min-width: 130px;">
+                    <option value="total">Total</option>
+                    <option value="new">New</option>
+                </select>
             </div>
         </div>
-
-        <!-- <div class="pure-g">
-            <div class="pure-u-1-6">
-                <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro')">Cases</button>
-            </div>
-            <div class="pure-u-1-6">
-                <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro')">Deaths</button>
-            </div>
-            <div class="pure-u-1-6">
-                <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro')">Vaccinations</button>
-            </div>
-        </div> -->
                 
         <div id="choro_cases" class="pure-g choro" style="display: block;">
             <div class="pure-u-1-1">
@@ -96,6 +93,16 @@
                     <p>From this diagram, we can see that there is a positive correlation where countries that are more developed, or have a higher human development index, somehow tend to have more deaths per million population. On the other hand, countries in poorer continents such as Africa and Asia tend to have a lower number of deaths per million population. </p>
                 </div>
             </div>
+            
+            <div class="pure-u-1-8 pure-form" style="justify-content: left;">
+                <select id="bubble_option" class="pure-input-1-1" onchange="changeBubbleOption()" style="min-width: 300px;">
+                    <option value="human_development_index">Human Development Index</option>
+                    <option value="gdp_per_capita">GDP per Capita</option>
+                    <option value="life_expectancy">Life Expectancy</option>
+                    <option value="population_density">Population Density</option>
+                    <option value="stringency_index">Stringency Index</option>
+                </select>
+            </div>
         </div>
 
 
@@ -116,7 +123,7 @@
 
         <div class="pure-g">
             <div class="pure-u-1-1">
-                <div id="bubble_cases_deaths" class="vis-container"></div>
+                <div id="bubble_plot" class="vis-container"></div>
             </div>
         </div>  
 
@@ -178,11 +185,15 @@
         vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_new_deaths", vg_5).then(function(result) {}).catch(console.error);
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
-        vegaEmbed("#bubble_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bubble_plot", vg_7).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
 
+
+        let choro = "choro_world_cases"
+        let bubble = "bubble_plot"
+        let option = "hdi"
         
         function toggleIdiom(id, cls) {
             var target = document.getElementById(id);
@@ -190,6 +201,39 @@
             for (i=0; i < allDivs.length; i++) {
                 allDivs[i].style.display = allDivs[i] != target ? 'none' : 'block'
             }
+        }
+
+        function getJson(filePath) {
+            let request = new XMLHttpRequest()
+            request.open("GET", filePath, false)
+            request.send(null)
+            return JSON.parse(request.responseText)
+        }
+
+        function refreshIdiom(id, vgJson) {
+            vegaEmbed(id, vgJson).then(_ => {}).catch(console.error)
+        }
+
+        function clickTypeButton(type) {
+            let temp = vg_2
+            vg_2
+            refreshIdiom("#bubble_plot", vg_2)
+        }
+
+        function changeMapOption() {
+            let option = document.getElementById("map_option").value
+            console.log(option)
+            let temp = vg_2
+            vg_2
+            refreshIdiom("#bubble_plot", vg_2)
+        }
+
+        function changeBubbleOption() {
+            let option = document.getElementById("bubble_option").value
+            console.log(option)
+            let temp = vg_2
+            vg_2
+            refreshIdiom("#bubble_plot", vg_2)
         }
         
     </script>
