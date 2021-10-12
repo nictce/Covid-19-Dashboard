@@ -6,10 +6,7 @@
   "transform": [
     {"filter": "datum.continent != ''"},
     {"filter": "datum.new_deaths_smoothed >= 0"},
-    {"filter": "datum.new_vaccinations_smoothed >= 0"},
-    {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"},
-    {"calculate": "datum.new_cases_smoothed", "as": "New Cases"},
-    {"calculate": "datum.new_vaccinations_smoothed", "as": "New Vaccinations"}
+    {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"}
   ],
   "vconcat": [
     {
@@ -25,7 +22,7 @@
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal",
           "scale": {"domain": {"param": "brush"}}, "axis": {"title": "", "tickCount": 10}},
-        "y": {"field": "New Cases", "type": "quantitative"},
+        "y": {"field": "New Deaths", "type": "quantitative"},
         "color": {
           "field": "location", "type": "nominal", 
           "legend": null
@@ -38,7 +35,7 @@
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
           {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
-          {"field": "New Cases", "type": "quantitative"}
+          {"field": "New Deaths", "type": "quantitative"}
         ]
       }
     },
@@ -51,14 +48,14 @@
       ],
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal", "axis": {"tickCount": 10}},
-        "y": {"field": "New Cases", "type": "quantitative", "axis": {"tickCount": 3, "grid": false}
+        "y": {"field": "New Deaths", "type": "quantitative", "axis": {"tickCount": 3, "grid": false}
         },
         "color": {"field": "location", "type": "nominal", "legend": null},
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
           {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
-          {"field": "New Cases", "type": "quantitative"}
+          {"field": "New Deaths", "type": "quantitative"}
         ]
       }
     }

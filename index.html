@@ -44,9 +44,9 @@
         <div class="pure-g">
             <div class="pure-u-1-2" style="justify-content: left;">
                 <div class="pure-button-group" role="group">
-                    <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro'); clickTypeButton('Cases')" style="width: 100px;">Cases</button>
-                    <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro'); clickTypeButton('Deaths')">Deaths</button>
-                    <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro'); clickTypeButton('Vaccinations')">Vaccinations</button>
+                    <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro'); toggleIdiom('line_cases', 'line'); clickTypeButton('Cases')" style="width: 100px;">Cases</button>
+                    <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro'); toggleIdiom('line_deaths', 'line'); clickTypeButton('Deaths')">Deaths</button>
+                    <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro'); toggleIdiom('line_vax', 'line'); clickTypeButton('Vaccinations')">Vaccinations</button>
                 </div>
             </div>
             <div class="pure-u-3-8"></div>
@@ -120,9 +120,21 @@
             </div>
         </div>   -->
 
-        <div class="pure-g">
+        <div id="line_cases" class="pure-g line" style="display: block;">
+            <div class="pure-u-1-1">
+                <div id="line_brush_cases" class="vis-container"></div>
+            </div>
+        </div>
+
+        <div id="line_deaths" class="pure-g line" style="display: none;">
             <div class="pure-u-1-1">
                 <div id="line_brush_deaths" class="vis-container"></div>
+            </div>
+        </div>
+
+        <div id="line_vax" class="pure-g line" style="display: none;">
+            <div class="pure-u-1-1">
+                <div id="line_brush_vax" class="vis-container"></div>
             </div>
         </div>
 
@@ -180,7 +192,9 @@
         var vg_8 = "line_total_deaths.vg.json";
         var vg_9 = "choro_world_cases.vg.json";
         var vg_10 = "choro_world_vax.vg.json";
-        var vg_11 = "line_brush_deaths.vg.json";
+        var vg_11 = "line_brush_cases.vg.json";
+        var vg_12 = "line_brush_deaths.vg.json";
+        var vg_13 = "line_brush_vax.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
@@ -193,7 +207,9 @@
         // vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
-        vegaEmbed("#line_brush_deaths", vg_11).then(function(result) {}).catch(console.error);
+        vegaEmbed("#line_brush_cases", vg_11).then(function(result) {}).catch(console.error);
+        vegaEmbed("#line_brush_deaths", vg_12).then(function(result) {}).catch(console.error);
+        vegaEmbed("#line_brush_vax", vg_13).then(function(result) {}).catch(console.error);
 
     </script>
 
@@ -230,13 +246,13 @@
             button = type
             if(type == "Cases"){
                 bubbleField = "Total Cases Per Million"
-                lineField = "New Cases"
+                // lineField = "New Cases"
             } else if(type == "Deaths"){
                 bubbleField = "Total Deaths Per Million"
-                lineField = "New Deaths"
+                // lineField = "New Deaths"
             } else if(type == "Vaccinations"){
                 bubbleField = "Fully Vaccinated Percentage"
-                lineField = "New Vaccinations"
+                // lineField = "New Vaccinations"
             }
             console.log(bubbleField)
             console.log(bubblePlot)
@@ -245,12 +261,12 @@
             bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", bubblePlot)
             
-            linePlot["transform"][2]["filter"] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
-            linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
-            linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
-            linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
-            linePlot["vconcat"][1]["encoding"]["tooltip"][3]["field"] = lineField
-            refreshIdiom("#line_brush_deaths", linePlot)
+            // linePlot["transform"][2]["filter"] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
+            // linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
+            // linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
+            // linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
+            // linePlot["vconcat"][1]["encoding"]["tooltip"][3]["field"] = lineField
+            // refreshIdiom("#line_brush_deaths", linePlot)
         }
 
         function changeMapOption() {
