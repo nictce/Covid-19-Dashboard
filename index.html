@@ -40,6 +40,7 @@
 
     <div class="page">
 
+        <!-- top menu buttons and options -->
         <div class="pure-g">
             <div class="pure-u-1-2" style="justify-content: left;">
                 <div class="pure-button-group" role="group">
@@ -56,7 +57,7 @@
                 </select>
             </div>
         </div>
-                
+        
         <div id="choro_cases" class="pure-g choro" style="display: block;">
             <div class="pure-u-1-1">
                 <div id="choro_world_cases" class="vis-container"></div>
@@ -74,15 +75,9 @@
                 <div id="choro_world_vax" class="vis-container"></div>
             </div>
         </div>
-        
-
-        <!-- <div class="pure-g">
-            <div class="pure-u-1-1">
-                <div id="choro_repeated" class="vis-container"></div>
-            </div>
-        </div> -->
 
 
+        <!-- bubble plot -->
         <div class="pure-g">
             <div class="pure-u-2-3">
                 <div id="bubble_plot"  class="vis-container"></div>
@@ -92,20 +87,21 @@
                     <h2>Comparing HDI with population deaths</h2>
                     <p>From this diagram, we can see that there is a positive correlation where countries that are more developed, or have a higher human development index, somehow tend to have more deaths per million population. On the other hand, countries in poorer continents such as Africa and Asia tend to have a lower number of deaths per million population. </p>
                 </div>
+                <div class="pure-form" style="justify-content: left;">
+                    <select id="bubble_option" class="pure-input-1-1" onchange="changeBubbleOption()" style="min-width: 300px;">
+                        <option value="Human Development Index">Human Development Index</option>
+                        <option value="GDP Per Capita">GDP Per Capita</option>
+                        <option value="Life Expectancy">Life Expectancy</option>
+                        <option value="Population Density">Population Density</option>
+                        <option value="Stringency Index">Stringency Index</option>
+                    </select>
+                </div>
             </div>
             
-            <div class="pure-u-1-8 pure-form" style="justify-content: left;">
-                <select id="bubble_option" class="pure-input-1-1" onchange="changeBubbleOption()" style="min-width: 300px;">
-                    <option value="Human Development Index">Human Development Index</option>
-                    <option value="GDP Per Capita">GDP Per Capita</option>
-                    <option value="Life Expectancy">Life Expectancy</option>
-                    <option value="Population Density">Population Density</option>
-                    <option value="Stringency Index">Stringency Index</option>
-                </select>
-            </div>
         </div>
 
 
+        <!-- line chart -->
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
@@ -118,11 +114,11 @@
             </div>
         </div>
 
-        <div class="pure-g">
+        <!-- <div class="pure-g">
             <div class="pure-u-1-1">
                 <div id="bubble_cases_deaths" class="vis-container"></div>
             </div>
-        </div>  
+        </div>   -->
 
         <div class="pure-g">
             <div class="pure-u-1-1">
@@ -130,13 +126,15 @@
             </div>
         </div>  
 
-        <div class="pure-g">
+        <!-- <div class="pure-g">
             <div class="pure-u-1-1">
                 <div id="line_total_deaths"  class="vis-container"></div>
             </div>
-        </div>  
+        </div>   -->
     </div>
 
+
+    <!-- heatmap -->
     <div class="page">
         <div class="pure-g">
             <div class="pure-u-1-1">
@@ -154,6 +152,8 @@
         </div>
     </div>
 
+
+    <!-- end -->
     <div class="page">
         <div class="pure-g">
             <div class="pure-u-1-1 small-font">
