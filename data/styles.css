@@ -41,3 +41,6 @@ body{
 .small-font{
     font-size: 14px;
 }
+.pure-button{
+    border-radius: 5px;
+}

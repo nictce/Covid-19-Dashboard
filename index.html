@@ -38,12 +38,43 @@
     </div>
 
 
-
     <div class="page">
+
+        <div class="pure-g" style="justify-content: left;">
+            <div class="pure-button-group" role="group">
+                <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro')" style="width: 100px;">Cases</button>
+                <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro')">Deaths</button>
+                <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro')">Vaccinations</button>
+            </div>
+        </div>
+
+        <!-- <div class="pure-g">
+            <div class="pure-u-1-6">
+                <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro')">Cases</button>
+            </div>
+            <div class="pure-u-1-6">
+                <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro')">Deaths</button>
+            </div>
+            <div class="pure-u-1-6">
+                <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro')">Vaccinations</button>
+            </div>
+        </div> -->
                 
-        <div class="pure-g">
+        <div id="choro_cases" class="pure-g choro" style="display: block;">
+            <div class="pure-u-1-1">
+                <div id="choro_world_cases" class="vis-container"></div>
+            </div>
+        </div>
+                
+        <div id="choro_deaths" class="pure-g choro" style="display: none;">
             <div class="pure-u-1-1">
                 <div id="choro_world_deaths" class="vis-container"></div>
+            </div>
+        </div>
+                
+        <div id="choro_vax" class="pure-g choro" style="display: none;">
+            <div class="pure-u-1-1">
+                <div id="choro_world_vax" class="vis-container"></div>
             </div>
         </div>
         
@@ -137,6 +168,8 @@
         var vg_6 = "heatmap_daily_cases.vg.json";
         var vg_7 = "bubble_cases_deaths.vg.json";
         var vg_8 = "line_total_deaths.vg.json";
+        var vg_9 = "choro_world_cases.vg.json";
+        var vg_10 = "choro_world_vax.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
@@ -147,6 +180,17 @@
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
         vegaEmbed("#bubble_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
+        vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
+        vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
+
+        
+        function toggleIdiom(id, cls) {
+            var target = document.getElementById(id);
+            var allDivs = document.getElementsByClassName(cls);
+            for (i=0; i < allDivs.length; i++) {
+                allDivs[i].style.display = allDivs[i] != target ? 'none' : 'block'
+            }
+        }
         
     </script>
 
