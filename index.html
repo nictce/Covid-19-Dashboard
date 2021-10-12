@@ -224,6 +224,9 @@
             } else if(type == "Vaccinations"){
                 bubbleField = "Fully Vaccinated Percentage"
             }
+            console.log(bubbleField)
+            console.log(vg_2["encoding"]["y"]["field"])
+            console.log(vg_2["layer"]["encoding"]["tooltip"][4]["field"])
             vg_2["encoding"]["y"]["field"] = bubbleField
             vg_2["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", vg_2)
@@ -231,12 +234,13 @@
 
         function changeMapOption() {
             let option = document.getElementById("map_option").value
-            // console.log(option)
+            console.log(option)
             if(option == "Total " && button == "Vaccinations"){
                 mapField = "Fully Vaccinated Percentage"
             } else {
                 mapField = option + button + " Per Million"
             }
+            console.log(mapField)
 
 
             // vg_2["encoding"]["y"]["field"] = bubbleField
@@ -246,7 +250,9 @@
 
         function changeBubbleOption() {
             let option = document.getElementById("bubble_option").value
-            // console.log(option)
+            console.log(vg_2["encoding"]["x"]["field"])
+            console.log(vg_2["layer"]["encoding"]["tooltip"][2]["field"])
+            console.log(option)
             vg_2["encoding"]["x"]["field"] = option
             vg_2["layer"]["encoding"]["tooltip"][2]["field"] = option
             refreshIdiom("#bubble_plot", vg_2)
