@@ -235,7 +235,7 @@
         }
 
         function changeMapOption() {
-            choropleth = getJson("./json/choro_world_cases.vg.json")
+            choropleth = getJson("./choro_world_cases.vg.json")
             let option = document.getElementById("map_option").value
             console.log(option)
             if(option == "Total " && button == "Vaccinations"){
@@ -253,7 +253,7 @@
         }
 
         function changeBubbleOption() {
-            bubblePlot = getJson("./json/bubble_hdi_deaths.vg.json")
+            bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
             console.log(bubblePlot["encoding"]["x"]["field"])
             console.log(bubblePlot["layer"]["encoding"]["tooltip"][2]["field"])
