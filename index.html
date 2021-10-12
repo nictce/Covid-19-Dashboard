@@ -205,6 +205,7 @@
         let button = "Cases"
         let bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
         let choropleth = getJson("./choro_world_cases.vg.json")
+        let linePlot = getJson("./line_brush_deaths.vg.json")
         
         function toggleIdiom(id, cls) {
             var target = document.getElementById(id);
@@ -229,20 +230,30 @@
             button = type
             if(type == "Cases"){
                 bubbleField = "Total Cases Per Million"
+                lineField = "New Cases"
             } else if(type == "Deaths"){
                 bubbleField = "Total Deaths Per Million"
+                lineField = "New Deaths"
             } else if(type == "Vaccinations"){
                 bubbleField = "Fully Vaccinated Percentage"
+                lineField = "New Vaccinations"
             }
             console.log(bubbleField)
             console.log(bubblePlot)
             bubblePlot["encoding"]["y"]["field"] = bubbleField
             bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", bubblePlot)
+            
+            linePlot["transform"][2] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
+            linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
+            linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
+            linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
+            linePlot["vconcat"][1]["encoding"]["tooltip"][3]["field"] = lineField
+            refreshIdiom("#line_brush_deaths", linePlot)
         }
 
         function changeMapOption() {
-            choropleth = getJson("./choro_world_cases.vg.json")
+            // choropleth = getJson("./choro_world_cases.vg.json")
             let option = document.getElementById("map_option").value
             console.log(option)
             if(option == "Total " && button == "Vaccinations"){
@@ -260,7 +271,7 @@
         }
 
         function changeBubbleOption() {
-            bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
+            // bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
             console.log(bubblePlot)
             console.log(option)

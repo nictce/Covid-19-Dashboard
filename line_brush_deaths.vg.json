@@ -6,30 +6,43 @@
   "transform": [
     {"filter": "datum.continent != ''"},
     {"filter": "datum.new_deaths_smoothed >= 0"},
-    {"filter": "datum.location != ''"},
-    {"filter": "datum.location != ''"},
-    {"filter": "datum.location != ''"},
-    {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"}
+    {"calculate": "datum.new_deaths_smoothed", "as": "New Deaths"},
+    {"calculate": "datum.new_cases_smoothed", "as": "New Cases"},
+    {"calculate": "datum.new_vaccinations_smoothed", "as": "New Vaccinations"}
   ],
   "vconcat": [
     {
-      "width": "container",
+      "width": 800,
       "height": 240,
       "mark": "line",
+      "params": [
+        {
+          "name": "country_highlight",
+          "select": {"type": "point", "encodings": ["color"]}
+        }
+      ],
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal",
           "scale": {"domain": {"param": "brush"}}, "axis": {"title": "", "tickCount": 10}},
-        "y": {"field": "New Deaths", "type": "quantitative"},
-        "color": {"field": "location", "type": "nominal", "legend": null},
+        "y": {"field": "New Cases", "type": "quantitative"},
+        "color": {
+          "field": "location", "type": "nominal", 
+          "legend": null
+        },
+        "opacity": {
+          "condition": {"param": "country_highlight", "value": 1},
+          "value": 0.1
+        },
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
-          {"field": "New Deaths", "type": "quantitative"}
+          {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
+          {"field": "New Cases", "type": "quantitative"}
         ]
       }
     },
     {
-      "width": "container",
+      "width": 800,
       "height": 60,
       "mark": "line",
       "params": [
@@ -37,13 +50,13 @@
       ],
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal", "axis": {"tickCount": 10}},
-        "y": {"field": "New Deaths", "type": "quantitative", "axis": {"tickCount": 3, "grid": false}
+        "y": {"field": "New Cases", "type": "quantitative", "axis": {"tickCount": 3, "grid": false}
         },
         "color": {"field": "location", "type": "nominal", "legend": null},
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
-          {"field": "New Deaths", "type": "quantitative"}
+          {"field": "New Cases", "type": "quantitative"}
         ]
       }
     }
