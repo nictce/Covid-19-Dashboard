@@ -227,10 +227,9 @@
                 bubbleField = "Fully Vaccinated Percentage"
             }
             console.log(bubbleField)
-            console.log(bubblePlot["encoding"]["y"]["field"])
-            console.log(bubblePlot["layer"]["encoding"]["tooltip"][4]["field"])
+            console.log(bubblePlot)
             bubblePlot["encoding"]["y"]["field"] = bubbleField
-            bubblePlot["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
+            bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", bubblePlot)
         }
 
@@ -255,11 +254,10 @@
         function changeBubbleOption() {
             bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
-            console.log(bubblePlot["encoding"]["x"]["field"])
-            console.log(bubblePlot["layer"]["encoding"]["tooltip"][2]["field"])
+            console.log(bubblePlot)
             console.log(option)
             bubblePlot["encoding"]["x"]["field"] = option
-            bubblePlot["layer"]["encoding"]["tooltip"][2]["field"] = option
+            bubblePlot["layer"][0]["encoding"]["tooltip"][2]["field"] = option
             refreshIdiom("#bubble_plot", bubblePlot)
         }
         
