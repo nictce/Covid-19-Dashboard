@@ -178,7 +178,7 @@
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
         vegaEmbed("#bubble_plot", vg_2).then(function(result) {}).catch(console.error);
-        vegaEmbed("#choro_repeated", vg_3).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#choro_repeated", vg_3).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
         vegaEmbed("#line_new_deaths", vg_5).then(function(result) {}).catch(console.error);
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
@@ -195,6 +195,8 @@
         // let choro = "choro_world_cases"
         let bubble = "bubble_plot"
         let button = "Cases"
+        let bubblePlot = getJson("./json/bubble_hdi_deaths.vg.json")
+        // let choropleth = getJson("./json/bubble_hdi_deaths.vg.json")
         
         function toggleIdiom(id, cls) {
             var target = document.getElementById(id);
@@ -225,11 +227,11 @@
                 bubbleField = "Fully Vaccinated Percentage"
             }
             console.log(bubbleField)
-            console.log(vg_2["encoding"]["y"]["field"])
-            console.log(vg_2["layer"]["encoding"]["tooltip"][4]["field"])
-            vg_2["encoding"]["y"]["field"] = bubbleField
-            vg_2["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
-            refreshIdiom("#bubble_plot", vg_2)
+            console.log(bubblePlot["encoding"]["y"]["field"])
+            console.log(bubblePlot["layer"]["encoding"]["tooltip"][4]["field"])
+            bubblePlot["encoding"]["y"]["field"] = bubbleField
+            bubblePlot["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
+            refreshIdiom("#bubble_plot", bubblePlot)
         }
 
         function changeMapOption() {
@@ -243,19 +245,19 @@
             console.log(mapField)
 
 
-            // vg_2["encoding"]["y"]["field"] = bubbleField
-            // vg_2["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
-            // refreshIdiom("#bubble_plot", vg_2)
+            // bubblePlot["encoding"]["y"]["field"] = bubbleField
+            // bubblePlot["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
+            // refreshIdiom("#bubble_plot", bubblePlot)
         }
 
         function changeBubbleOption() {
             let option = document.getElementById("bubble_option").value
-            console.log(vg_2["encoding"]["x"]["field"])
-            console.log(vg_2["layer"]["encoding"]["tooltip"][2]["field"])
+            console.log(bubblePlot["encoding"]["x"]["field"])
+            console.log(bubblePlot["layer"]["encoding"]["tooltip"][2]["field"])
             console.log(option)
-            vg_2["encoding"]["x"]["field"] = option
-            vg_2["layer"]["encoding"]["tooltip"][2]["field"] = option
-            refreshIdiom("#bubble_plot", vg_2)
+            bubblePlot["encoding"]["x"]["field"] = option
+            bubblePlot["layer"]["encoding"]["tooltip"][2]["field"] = option
+            refreshIdiom("#bubble_plot", bubblePlot)
         }
         
     </script>
