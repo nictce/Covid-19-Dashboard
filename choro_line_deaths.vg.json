@@ -1,94 +1,92 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "COVID-19 Total Deaths Per Million Population",
-    "width": 800,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
-      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "COVID-19 Total Deaths Per Million Population",
+  "width": 800,
+  "height": 400,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.ISO_A3",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
+        },
+        "key": "iso_code",
+        "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred", "location"]
+      }
     },
-    "transform": [
-      {
-        "lookup": "properties.ISO_A3",
-        "from": {
-          "data": {
-            "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
-          },
-          "key": "iso_code",
-          "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred"]
+    {
+      "calculate": "datum.total_deaths_per_million + 1",
+      "as": "Total Deaths Per Million"
+    }
+  ],
+
+  "vconcat": [
+    {
+      "projection": {"type": "equirectangular"},
+      "width": 800,
+      "height": 400,
+      "mark": {
+        "type": "geoshape",
+        "cursor": "pointer"
+        },
+      "params": [
+        {
+          "name": "country_highlight",
+          "select": {"type": "point", "fields": ["location"]}
         }
-      },
-      {
-        "calculate": "datum.total_deaths_per_million + 1",
-        "as": "Total Deaths Per Million"
-      }
-    ],
-    "vconcat": [
-      {
-        "projection": {"type": "equirectangular"},
-        "width": 800,
-        "height": 400,
-        "mark": {
-          "type": "geoshape",
-          "cursor": "pointer"
-          },
-        "params": [
+      ],
+      "x": {"field": "location"},
+      "encoding": {
+        "color": {
+          "field": "Total Deaths Per Million",
+          "type": "quantitative",
+          "scale": {"type": "log", "scheme": "reds"}
+        },
+        "fillOpacity": {
+          "condition": {"param": "country_highlight", "value": 1},
+          "value": 0.3
+        },
+        "tooltip": [
+          {"field": "location", "type": "nominal", "title": "Country"},
+          {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"},
           {
-            "name": "country_highlight",
-            "select": {"type": "point", "encodings": ["color", "location"]}
-          }
-        ],
-        "x": {"field": "location"},
-        "encoding": {
-          "color": {
-            "field": "Total Deaths Per Million",
+            "field": "total_deaths_per_million",
             "type": "quantitative",
-            "scale": {"type": "log", "scheme": "reds"}
+            "title": "Total Deaths Per Million"
           },
-          "fillOpacity": {
-            "condition": {"param": "country_highlight", "value": 1},
-            "value": 0.3
+          {
+            "field": "people_fully_vaccinated_per_hundred",
+            "type": "quantitative",
+            "title": "Percentage Fully Vaccinated"
           },
-          "tooltip": [
-            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-            {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"},
-            {
-              "field": "total_deaths_per_million",
-              "type": "quantitative",
-              "title": "Total Deaths Per Million"
-            },
-            {
-              "field": "people_fully_vaccinated_per_hundred",
-              "type": "quantitative",
-              "title": "Percentage Fully Vaccinated"
-            },
-            {"field": "last_updated_date", "title": "Date Updated"}
-          ]
-        }
-      },
-      {
-        "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
-        "mark": "line",
-        "width": 800,
-        "transform": [
-          {"filter": "datum.continent != ''"},
-          {"filter": "datum.new_deaths_smoothed >= 0"},
-          {"filter": "datum.total_deaths_per_million == country_highlight"}
-        ],
-        "encoding": {
-          "x": {"field": "date", "type": "temporal"},
-          "y": {"field": "new_deaths_smoothed", "type": "quantitative"},
-          "color": {"field": "location", "type": "nominal"},
-          "tooltip": [
-            {"field": "location", "type": "nominal", "title": "Country"},
-            {
-                "field": "new_deaths_smoothed",
-                "type": "quantitative",
-                "title": "New Deaths"
-            },
-            {"field": "date", "title": "Date"}
-          ]
-        }
+          {"field": "last_updated_date", "title": "Date Updated"}
+        ]
       }
-    ]
-  }
+    },
+    
+    {
+    "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
+    "width": 800,
+      "mark": "line",
+      "transform": [
+        {"filter": "datum.continent != ''"},
+        {"filter": "datum.new_deaths_smoothed >= 0"}        
+        ],
+
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "new_deaths_smoothed", "type": "quantitative"},
+        "color": {"field": "location", "type": "nominal"},
+        "opacity": {
+            "condition": {"param": "country_highlight", "value": 1},
+            "value": 0.1
+          }
+      }
+    }
+  ]
+}
