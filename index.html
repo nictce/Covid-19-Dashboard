@@ -44,17 +44,17 @@
         <div class="pure-g">
             <div class="pure-u-1-2" style="justify-content: left;">
                 <div class="pure-button-group" role="group">
-                    <button id="cases" class="pure-button" onclick="toggleIdiom('choro_cases', 'choro'); toggleIdiom('line_cases', 'line'); clickTypeButton('Cases')" style="width: 100px;">Cases</button>
-                    <button id="deaths" class="pure-button" onclick="toggleIdiom('choro_deaths', 'choro'); toggleIdiom('line_deaths', 'line'); clickTypeButton('Deaths')">Deaths</button>
-                    <button id="vax" class="pure-button" onclick="toggleIdiom('choro_vax', 'choro'); toggleIdiom('line_vax', 'line'); clickTypeButton('Vaccinations')">Vaccinations</button>
+                    <button id="cases" class="pure-button" onclick="clickTypeButton('Cases')" style="width: 100px;">Cases</button>
+                    <button id="deaths" class="pure-button" onclick="clickTypeButton('Deaths')">Deaths</button>
+                    <button id="vax" class="pure-button" onclick="clickTypeButton('Vaccinations')">Vaccinations</button>
                 </div>
             </div>
             <div class="pure-u-3-8"></div>
             <div class="pure-u-1-8 pure-form" style="justify-content: right;">
-                <!-- <select id="map_option" class="pure-input-1-1" onchange="changeMapOption()" style="min-width: 130px;">
+                <select id="map_option" class="pure-input-1-1" onchange="clickTypeButton('')" style="min-width: 130px;">
                     <option value="Total ">Total</option>
                     <option value="New ">New</option>
-                </select> -->
+                </select>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
             </div>
         </div>
         
-        <div id="choro_cases" class="pure-g choro" style="display: block;">
+        <!-- <div id="choro_cases" class="pure-g choro" style="display: block;">
             <div class="pure-u-1-1">
                 <div id="choro_world_cases" class="vis-container"></div>
             </div>
@@ -80,7 +80,7 @@
             <div class="pure-u-1-1">
                 <div id="choro_world_vax" class="vis-container"></div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- bubble plot -->
@@ -126,7 +126,7 @@
             </div>
         </div>   -->
 
-        <div id="line_cases" class="pure-g line" style="display: block;">
+        <!-- <div id="line_cases" class="pure-g line" style="display: block;">
             <div class="pure-u-1-1">
                 <div id="line_brush_cases" class="vis-container"></div>
             </div>
@@ -142,7 +142,7 @@
             <div class="pure-u-1-1">
                 <div id="line_brush_vax" class="vis-container"></div>
             </div>
-        </div>
+        </div> -->
 
         <div class="pure-g">
             <div class="pure-u-1-1">
@@ -225,11 +225,12 @@
 
 
         // let choro = "choro_world_cases"
-        let bubble = "bubble_plot"
+        // let bubble = "bubble_plot"
         let button = "Cases"
+        let mapOption = "Total"
         let bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
-        let choropleth = getJson("./choro_world_cases.vg.json")
-        let linePlot = getJson("./line_brush_deaths.vg.json")
+        let mapLine = getJson("./choro_line_deaths.vg.json")
+        // let linePlot = getJson("./line_brush_deaths.vg.json")
         
         function toggleIdiom(id, cls) {
             var target = document.getElementById(id);
@@ -251,24 +252,74 @@
         }
 
         function clickTypeButton(type) {
-            button = type
+            button = type == '' ? button : type
+            mapOption = document.getElementById("map_option").value
             if(type == "Cases"){
                 bubbleField = "Total Cases Per Million"
+                lineField1 = "new_cases_smoothed"
+                lineField2 = "New Cases"
+                if(mapOption == "Total"){
+                    mapField = "Total Cases Per Million"
+                    caption1 = "datum.location + ' has the highest proportion of cases with a total of '"
+                    caption2 = "datum['Total Cases Per Million'] + ' cases per million population as of ' + datum.last_updated_date + '.'"
+                } else {
+                    mapField = "New Cases Per Million"
+                    caption1 = "datum.location + ' has the highest infection rate with a total of '"
+                    caption2 = "datum['New Cases Per Million'] + ' cases per million population on ' + datum.last_updated_date + '.'"
+                }
                 // lineField = "New Cases"
             } else if(type == "Deaths"){
                 bubbleField = "Total Deaths Per Million"
+                lineField1 = "new_deaths_smoothed"
+                lineField2 = "New Deaths"
+                if(mapOption == "Total"){
+                    mapField = "Total Deaths Per Million"
+                    caption1 = "datum.location + ' has the highest proportion of deaths with a total of '"
+                    caption2 = "datum['Total Deaths Per Million'] + ' deaths per million population as of ' + datum.last_updated_date + '.'"
+                } else {
+                    mapField = "New Deaths Per Million"
+                    caption1 = "datum.location + ' currently has the highest death rate with a total of '"
+                    caption2 = "datum['New Deaths Per Million'] + ' deaths per million population on ' + datum.last_updated_date + '.'"
+                }
                 // lineField = "New Deaths"
             } else if(type == "Vaccinations"){
                 bubbleField = "Fully Vaccinated Percentage"
+                lineField1 = "new_vaccinations_smoothed"
+                lineField2 = "New Vaccinations"
+                if(mapOption == "Total"){
+                    mapField = "Fully Vaccinated Percentage"
+                    caption1 = "datum.location + ' has the highest proportion of vaccinated citizens with'"
+                    caption2 = "datum['Fully Vaccinated Percentage'] + '% of the population fully vaccinated as of ' + datum.last_updated_date + '.'"
+                } else {
+                    mapField = "New Vaccinated Per Million"
+                    caption1 = "datum.location + ' currently has the highest vaccination rate with'"
+                    caption2 = "datum['New Vaccinations Per Million'] + ' new vaccinations given out on ' + datum.last_updated_date + '.'"
+                }
                 // lineField = "New Vaccinations"
             }
-            console.log(bubbleField)
-            console.log(bubblePlot)
-            console.log(linePlot)
+            // console.log(bubbleField)
+            // console.log(bubblePlot)
+            // console.log(linePlot)
+
+            // bubble plot
             bubblePlot["encoding"]["y"]["field"] = bubbleField
             bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
             refreshIdiom("#bubble_plot", bubblePlot)
             
+            // choropleth map
+            mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["field"] = mapField
+            mapLine["vconcat"][0]["layer"][1]["transform"][1]["sort"][0]["field"] = mapField
+            mapLine["vconcat"][0]["layer"][1]["transform"][3]["calculate"] = caption1
+            mapLine["vconcat"][0]["layer"][2]["transform"][1]["sort"][0]["field"] = mapField
+            mapLine["vconcat"][0]["layer"][2]["transform"][3]["calculate"] = caption2
+
+            // line chart
+            mapLine["vconcat"][1]["encoding"]["y"]["field"] = lineField1
+            mapLine["vconcat"][1]["encoding"]["y"]["title"] = lineField2
+            mapLine["vconcat"][2]["encoding"]["y"]["field"] = lineField2
+            mapLine["vconcat"][2]["encoding"]["y"]["title"] = lineField2
+            
+            refreshIdiom("#choro_line_deaths", mapLine)
             // linePlot["transform"][2]["filter"] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
             // linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
             // linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
@@ -279,7 +330,7 @@
 
         function changeMapOption() {
             // choropleth = getJson("./choro_world_cases.vg.json")
-            let option = document.getElementById("map_option").value
+            mapOption = document.getElementById("map_option").value
             console.log(option)
             if(option == "Total " && button == "Vaccinations"){
                 mapField = "Fully Vaccinated Percentage"

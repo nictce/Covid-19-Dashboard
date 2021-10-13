@@ -49,7 +49,7 @@
           },
           "encoding": {
             "color": {
-              "field": ["Total Cases Per Million"],
+              "field": "Total Cases Per Million",
               "type": "quantitative",
               "scale": {"type": "log", "scheme": "reds"},
               "legend": {
@@ -83,7 +83,7 @@
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum.location + ' has the highest infection rate with a total of '",
+              "calculate": "datum.location + ' has the highest proportion of cases with a total of '",
               "as": "text_annotation"
             }
           ],
@@ -105,7 +105,7 @@
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum['Total Cases Per Million'] + ' cases per million population.'",
+              "calculate": "datum['Total Cases Per Million'] + ' cases per million population as of ' + datum.last_updated_date + '.'",
               "as": "text_annotation"
             }
           ],
