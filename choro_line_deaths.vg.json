@@ -46,7 +46,7 @@
           },
           "encoding": {
             "color": {
-              "field": ["Total Deaths Per Million"],
+              "field": ["Total Cases Per Million"],
               "type": "quantitative",
               "scale": {"type": "log", "scheme": "reds"},
               "legend": {
@@ -76,11 +76,11 @@
             {"filter": {"param": "country_highlight"}},
             {
               "window": [{"op": "rank", "as": "ranking"}],
-              "sort": [{"field": "Total Deaths Per Million", "order": "descending"}]
+              "sort": [{"field": "Total Cases Per Million", "order": "descending"}]
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum.location + ' has the highest death rate with a total of '",
+              "calculate": "datum.location + ' has the highest infection rate with a total of '",
               "as": "text_annotation"
             }
           ],
@@ -98,11 +98,11 @@
             {"filter": {"param": "country_highlight"}},
             {
               "window": [{"op": "rank", "as": "ranking"}],
-              "sort": [{"field": "Total Deaths Per Million", "order": "descending"}]
+              "sort": [{"field": "Total Cases Per Million", "order": "descending"}]
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum['Total Deaths Per Million'] + ' deaths per million population.'",
+              "calculate": "datum['Total Cases Per Million'] + ' cases per million population.'",
               "as": "text_annotation"
             }
           ],
@@ -122,7 +122,7 @@
 
       "encoding": {
         "x": {"field": "date", "title": "", "type": "temporal", "axis": {"tickCount": 10}},
-        "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
+        "y": {"field": "new_cases_smoothed", "type": "quantitative", "title": "New Cases"},
         "color": {"field": "location", "type": "nominal", "legend": null},
         "opacity": {
             "condition": {"param": "country_highlight", "value": 1},
@@ -147,7 +147,7 @@
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal",
           "scale": {"domain": {"param": "brush"}}, "axis": {"title": "Date", "tickCount": 10}},
-        "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
+        "y": {"field": "new_cases_smoothed", "type": "quantitative", "title": "New Cases"},
         "color": {"field": "location", "type": "nominal", "legend": null},
         "opacity": {
           "condition": {"param": "country_highlight", "value": 1},
