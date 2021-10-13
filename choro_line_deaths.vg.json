@@ -106,7 +106,7 @@
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum.total_deaths_per_million + ' deaths per million population.'",
+              "calculate": "toNumber(datum.total_deaths_per_million) + ' deaths per million population.'",
               "as": "text_annotation"
             }
           ],
@@ -127,7 +127,7 @@
       "encoding": {
         "x": {"field": "date", "title": "", "type": "temporal", "axis": {"tickCount": 10}},
         "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
-        "color": {"field": "location", "type": "nominal", "legend": null},
+        "color": {"field": "location", "type": "nominal", "legend": null, "scale": {"scheme": "tableau20"}},
         "opacity": {
             "condition": {"param": "country_highlight", "value": 1},
             "value": 0.1
@@ -152,7 +152,7 @@
         "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
         "color": {
           "field": "location", "type": "nominal", 
-          "legend": null
+          "legend": null, "scale": {"scheme": "tableau20"}
         },
         "opacity": {
           "condition": {"param": "country_highlight", "value": 1},
