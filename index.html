@@ -204,7 +204,7 @@
         var vg_14 = "choro_line_deaths.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
         vegaEmbed("#bubble_plot", vg_2).then(function(result) {}).catch(console.error);
         // vegaEmbed("#choro_repeated", vg_3).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
@@ -212,11 +212,11 @@
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
         // vegaEmbed("#bubble_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
         // vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
-        vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
-        vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
-        vegaEmbed("#line_brush_cases", vg_11).then(function(result) {}).catch(console.error);
-        vegaEmbed("#line_brush_deaths", vg_12).then(function(result) {}).catch(console.error);
-        vegaEmbed("#line_brush_vax", vg_13).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#line_brush_cases", vg_11).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#line_brush_deaths", vg_12).then(function(result) {}).catch(console.error);
+        // vegaEmbed("#line_brush_vax", vg_13).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_line_deaths", vg_14).then(function(result) {}).catch(console.error);
 
     </script>
@@ -316,7 +316,7 @@
             // line chart
             mapLine["vconcat"][1]["encoding"]["y"]["field"] = lineField1
             mapLine["vconcat"][1]["encoding"]["y"]["title"] = lineField2
-            mapLine["vconcat"][2]["encoding"]["y"]["field"] = lineField2
+            mapLine["vconcat"][2]["encoding"]["y"]["field"] = lineField1
             mapLine["vconcat"][2]["encoding"]["y"]["title"] = lineField2
             
             refreshIdiom("#choro_line_deaths", mapLine)
