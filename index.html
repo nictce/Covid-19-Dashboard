@@ -313,6 +313,30 @@
             mapLine["vconcat"][0]["layer"][2]["transform"][1]["sort"][0]["field"] = mapField
             mapLine["vconcat"][0]["layer"][2]["transform"][3]["calculate"] = caption2
 
+            if(button == "Vaccinations") {
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["scheme"] = "greens"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["type"] = mapOption == "Total" ? "linear" : "log"
+            } else {
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["scheme"] = "reds"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["type"] = "log"
+            }
+            
+            if(mapOption == "Total") {
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][1]["field"] = "total_cases_per_million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][1]["title"] = "Total Cases Per Million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][2]["field"] = "total_deaths_per_million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][2]["title"] = "Total Deaths Per Million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][3]["field"] = "people_fully_vaccinated_per_hundred"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][3]["title"] = "Fully Vaccinated Percentage"
+            } else {
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][1]["field"] = "new_cases_per_million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][1]["title"] = "New Cases Per Million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][2]["field"] = "new_deaths_per_million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][2]["title"] = "New Deaths Per Million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][3]["field"] = "new_vaccinations_smoothed_per_million"
+                mapLine["vconcat"][0]["layer"][0]["encoding"]["tooltip"][3]["title"] = "New Vaccinations Per Million"
+            }
+
             // line chart
             mapLine["vconcat"][1]["encoding"]["y"]["field"] = lineField1
             mapLine["vconcat"][1]["encoding"]["y"]["title"] = lineField2
