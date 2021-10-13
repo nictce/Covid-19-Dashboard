@@ -6,7 +6,9 @@
   },
   "transform": [
     {"filter": "datum.continent != ''"},
-    {"filter": "datum.new_deaths_smoothed >= 0"}        
+    {"filter": "datum.new_cases_smoothed >= 0"},
+    {"filter": "datum.new_deaths_smoothed >= 0"},
+    {"filter": "datum.new_vaccinations_smoothed >= 0"}
   ],
 
 
@@ -30,6 +32,7 @@
             "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred", "location"]
           }
         },
+        
 
         {"calculate": "toNumber(datum.total_cases_per_million) + 1", "as": "Total Cases Per Million"},
         {"calculate": "toNumber(datum.total_deaths_per_million) + 1", "as": "Total Deaths Per Million"},
@@ -114,7 +117,7 @@
     
     {
       "width": 850,
-      "height": 125,
+      "height": 100,
       "mark": "line",
       "params": [
         {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
