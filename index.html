@@ -316,11 +316,11 @@
             if(button == "Vaccinations") {
                 mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["scheme"] = "greens"
                 mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["type"] = mapOption == "Total" ? "linear" : "log"
-                mapLine["vconcat"][0]["transform"][1]["filter"] = "datum.new_vaccinations_smoothed_per_million > 0"
+                mapLine["vconcat"][0]["transform"][1]["filter"] = "datum.new_vaccinations_smoothed > 0"
             } else {
                 mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["scheme"] = "reds"
                 mapLine["vconcat"][0]["layer"][0]["encoding"]["color"]["scale"]["type"] = "log"
-                mapLine["vconcat"][0]["transform"][1]["filter"] = "datum.new_vaccinations_smoothed_per_million >= 0"
+                mapLine["vconcat"][0]["transform"][1]["filter"] = "datum.new_vaccinations_smoothed >= 0"
             }
             
             if(mapOption == "Total") {
