@@ -265,7 +265,7 @@
                 } else {
                     mapField = "New Cases Per Million"
                     caption1 = "datum.location + ' has the highest infection rate with a total of '"
-                    caption2 = "datum['New Cases Per Million'] + ' cases per million population on ' + datum.last_updated_date + '.'"
+                    caption2 = "datum['New Cases Per Million'] + ' new cases per million population on ' + datum.last_updated_date + '.'"
                 }
                 // lineField = "New Cases"
             } else if(button == "Deaths"){
@@ -279,7 +279,7 @@
                 } else {
                     mapField = "New Deaths Per Million"
                     caption1 = "datum.location + ' currently has the highest death rate with a total of '"
-                    caption2 = "datum['New Deaths Per Million'] + ' deaths per million population on ' + datum.last_updated_date + '.'"
+                    caption2 = "datum['New Deaths Per Million'] + ' new deaths per million population on ' + datum.last_updated_date + '.'"
                 }
                 // lineField = "New Deaths"
             } else if(button == "Vaccinations"){
@@ -291,7 +291,7 @@
                     caption1 = "datum.location + ' has the highest proportion of vaccinated citizens with'"
                     caption2 = "datum['Fully Vaccinated Percentage'] + '% of the population fully vaccinated as of ' + datum.last_updated_date + '.'"
                 } else {
-                    mapField = "New Vaccinated Per Million"
+                    mapField = "New Vaccinations Per Million"
                     caption1 = "datum.location + ' currently has the highest vaccination rate with'"
                     caption2 = "datum['New Vaccinations Per Million'] + ' new vaccinations given out on ' + datum.last_updated_date + '.'"
                 }
