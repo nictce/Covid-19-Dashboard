@@ -254,7 +254,7 @@
         function clickTypeButton(type) {
             button = type == '' ? button : type
             mapOption = document.getElementById("map_option").value
-            if(type == "Cases"){
+            if(button == "Cases"){
                 bubbleField = "Total Cases Per Million"
                 lineField1 = "new_cases_smoothed"
                 lineField2 = "New Cases"
@@ -268,7 +268,7 @@
                     caption2 = "datum['New Cases Per Million'] + ' cases per million population on ' + datum.last_updated_date + '.'"
                 }
                 // lineField = "New Cases"
-            } else if(type == "Deaths"){
+            } else if(button == "Deaths"){
                 bubbleField = "Total Deaths Per Million"
                 lineField1 = "new_deaths_smoothed"
                 lineField2 = "New Deaths"
@@ -282,7 +282,7 @@
                     caption2 = "datum['New Deaths Per Million'] + ' deaths per million population on ' + datum.last_updated_date + '.'"
                 }
                 // lineField = "New Deaths"
-            } else if(type == "Vaccinations"){
+            } else if(button == "Vaccinations"){
                 bubbleField = "Fully Vaccinated Percentage"
                 lineField1 = "new_vaccinations_smoothed"
                 lineField2 = "New Vaccinations"
@@ -324,11 +324,11 @@
             console.log(caption2)
             console.log(mapLine)
             console.log(button)
-            console.log(type)
+            console.log(button)
             console.log(mapOption)
             
             refreshIdiom("#choro_line_deaths", mapLine)
-            // linePlot["transform"][2]["filter"] = type == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
+            // linePlot["transform"][2]["filter"] = button == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
             // linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
             // linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
             // linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
