@@ -1,33 +1,40 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 850,
-
   "data": {
-    "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
   },
   "transform": [
-    {
-      "lookup": "properties.ISO_A3",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
-        },
-        "key": "iso_code",
-        "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred", "location"]
-      }
-    },
-    {
-      "calculate": "datum.total_deaths_per_million + 1",
-      "as": "Total Deaths Per Million"
-    }
+    {"filter": "datum.continent != ''"},
+    {"filter": "datum.new_deaths_smoothed >= 0"}        
   ],
+
 
   "vconcat": [
     {
-      "projection": {"type": "equirectangular"},
       "width": 850,
-      "height": 400,
+      "height": 425,
+      "data": {
+        "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.ISO_A3",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
+            },
+            "key": "iso_code",
+            "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred", "location"]
+          }
+        },
+        {
+          "calculate": "datum.total_deaths_per_million + 1",
+          "as": "Total Deaths Per Million"
+        }
+      ],
+      "projection": {"type": "equirectangular"},
       "mark": {
         "type": "geoshape",
         "cursor": "pointer"
@@ -46,8 +53,8 @@
           "legend": {
             "orient": "none",
             "direction": "horizontal",
-            "legendX": 20,
-            "legendY": 310,
+            "legendX": 10,
+            "legendY": 325,
             "gradientLength": 130,
             "tickCount": 4
           }
@@ -75,14 +82,9 @@
     },
     
     {
-    "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
-    "width": 850,
-    "height": 125,
+      "width": 850,
+      "height": 125,
       "mark": "line",
-      "transform": [
-        {"filter": "datum.continent != ''"},
-        {"filter": "datum.new_deaths_smoothed >= 0"}        
-      ],
       "params": [
         {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
       ],
@@ -105,14 +107,10 @@
     },
 
     {
-      "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
       "width": 850,
       "height": 300,
+      "transform": [{"filter": {"param": "country_highlight"}}],
       "mark": "line",
-      "transform": [
-        {"filter": "datum.continent != ''"},
-        {"filter": "datum.new_deaths_smoothed >= 0"}        
-      ],
       "encoding": {
         "x": {"field": "date", "title": "Date", "type": "temporal",
           "scale": {"domain": {"param": "brush"}}, "axis": {"title": "Date", "tickCount": 10}},
