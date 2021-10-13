@@ -86,6 +86,11 @@
       }
     },
     {
+      "params": [{
+        "name": "grid",
+        "select": "interval",
+        "bind": "scales"
+      }],
       "mark": {
         "type": "text",
         "align": "right",
