@@ -70,6 +70,12 @@
               {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"},
               {"field": "total_deaths_per_million", "type": "quantitative", "title": "Total Deaths Per Million"},
               {"field": "people_fully_vaccinated_per_hundred", "type": "quantitative", "title": "Fully Vaccinated Percentage"},
+              {"field": "Total Cases Per Million"},
+              {"field": "Total Deaths Per Million"},
+              {"field": "Fully Vaccinated Percentage"},
+              {"field": "New Cases Per Million"},
+              {"field": "New Deaths Per Million"},
+              {"field": "New Vaccinations Per Million"},
               {"field": "last_updated_date", "title": "Date Updated"}
             ]
           }
