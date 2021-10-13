@@ -345,13 +345,13 @@
             mapLine["vconcat"][2]["encoding"]["y"]["field"] = lineField1
             mapLine["vconcat"][2]["encoding"]["y"]["title"] = lineField2
 
-            console.log(mapField)
-            console.log(caption1)
-            console.log(caption2)
-            console.log(mapLine)
-            console.log(button)
-            console.log(button)
-            console.log(mapOption)
+            // console.log(mapField)
+            // console.log(caption1)
+            // console.log(caption2)
+            // console.log(mapLine)
+            // console.log(button)
+            // console.log(button)
+            // console.log(mapOption)
             
             refreshIdiom("#choro_line_deaths", mapLine)
             // linePlot["transform"][2]["filter"] = button == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
@@ -365,13 +365,13 @@
         function changeMapOption() {
             // choropleth = getJson("./choro_world_cases.vg.json")
             mapOption = document.getElementById("map_option").value
-            console.log(option)
+            // console.log(option)
             if(option == "Total " && button == "Vaccinations"){
                 mapField = "Fully Vaccinated Percentage"
             } else {
                 mapField = option + button + " Per Million"
             }
-            console.log(mapField)
+            // console.log(mapField)
             // choropleth[""]
 
 
@@ -383,8 +383,8 @@
         function changeBubbleOption() {
             // bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
-            console.log(bubblePlot)
-            console.log(option)
+            // console.log(bubblePlot)
+            // console.log(option)
             bubblePlot["encoding"]["x"]["field"] = option
             bubblePlot["layer"][0]["encoding"]["tooltip"][2]["field"] = option
             refreshIdiom("#bubble_plot", bubblePlot)
