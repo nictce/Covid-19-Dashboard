@@ -30,10 +30,14 @@
             "fields": ["total_deaths_per_million", "total_cases_per_million", "last_updated_date", "people_fully_vaccinated_per_hundred", "location"]
           }
         },
-        {
-          "calculate": "toNumber(datum.total_deaths_per_million) + 1",
-          "as": "Total Deaths Per Million"
-        }
+
+        {"calculate": "toNumber(datum.total_cases_per_million) + 1", "as": "Total Cases Per Million"},
+        {"calculate": "toNumber(datum.total_deaths_per_million) + 1", "as": "Total Deaths Per Million"},
+        {"calculate": "toNumber(datum.people_fully_vaccinated_per_hundred) + 1", "as": "Fully Vaccinated Percentage"},
+
+        {"calculate": "toNumber(datum.new_cases_per_million) + 1", "as": "New Cases Per Million"},
+        {"calculate": "toNumber(datum.new_deaths_per_million) + 1", "as": "New Deaths Per Million"},
+        {"calculate": "toNumber(datum.new_vaccinations_smoothed_per_million) + 1", "as": "New Vaccinations Per Million"}
       ],
       "layer": [
         {
@@ -59,18 +63,10 @@
               "value": 0.3
             },
             "tooltip": [
-              {"field": "location", "type": "nominal", "title": "Country"},
+              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
               {"field": "total_cases_per_million", "type": "quantitative", "title": "Total Cases Per Million"},
-              {
-                "field": "total_deaths_per_million",
-                "type": "quantitative",
-                "title": "Total Deaths Per Million"
-              },
-              {
-                "field": "people_fully_vaccinated_per_hundred",
-                "type": "quantitative",
-                "title": "Percentage Fully Vaccinated"
-              },
+              {"field": "total_deaths_per_million", "type": "quantitative", "title": "Total Deaths Per Million"},
+              {"field": "people_fully_vaccinated_per_hundred", "type": "quantitative", "title": "Fully Vaccinated Percentage"},
               {"field": "last_updated_date", "title": "Date Updated"}
             ]
           }
@@ -106,7 +102,7 @@
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "toNumber(datum.total_deaths_per_million) + ' deaths per million population.'",
+              "calculate": "datum['Total Deaths Per Million'] + ' deaths per million population.'",
               "as": "text_annotation"
             }
           ],
@@ -127,7 +123,7 @@
       "encoding": {
         "x": {"field": "date", "title": "", "type": "temporal", "axis": {"tickCount": 10}},
         "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
-        "color": {"field": "location", "type": "nominal", "legend": null, "scale": {"scheme": "tableau20"}},
+        "color": {"field": "location", "type": "nominal", "legend": null},
         "opacity": {
             "condition": {"param": "country_highlight", "value": 1},
             "value": 0.1
@@ -136,7 +132,9 @@
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
           {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
-          {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"}
+          {"field": "new_cases_smoothed", "type": "quantitative", "title": "New Cases"},
+          {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
+          {"field": "new_vaccinations_smoothed", "type": "quantitative", "title": "New Vaccinations"}
         ]
       }
     },
@@ -150,10 +148,7 @@
         "x": {"field": "date", "title": "Date", "type": "temporal",
           "scale": {"domain": {"param": "brush"}}, "axis": {"title": "Date", "tickCount": 10}},
         "y": {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
-        "color": {
-          "field": "location", "type": "nominal", 
-          "legend": null, "scale": {"scheme": "tableau20"}
-        },
+        "color": {"field": "location", "type": "nominal", "legend": null},
         "opacity": {
           "condition": {"param": "country_highlight", "value": 1},
           "value": 0
@@ -162,7 +157,9 @@
           {"field": "location", "type": "nominal", "title": "Country"},
           {"field": "date", "type": "temporal", "title": "Date"},
           {"field": "total_cases", "type": "quantitative", "title": "Total Cases"},
-          {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"}
+          {"field": "new_cases_smoothed", "type": "quantitative", "title": "New Cases"},
+          {"field": "new_deaths_smoothed", "type": "quantitative", "title": "New Deaths"},
+          {"field": "new_vaccinations_smoothed", "type": "quantitative", "title": "New Vaccinations"}
         ]
       }
     }
