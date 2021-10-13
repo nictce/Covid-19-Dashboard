@@ -1,8 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "COVID-19 Total Deaths Per Million Population",
-  "width": 700,
-  "height": 400,
+  "width": 850,
 
   "data": {
     "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
@@ -28,7 +26,7 @@
   "vconcat": [
     {
       "projection": {"type": "equirectangular"},
-      "width": 700,
+      "width": 850,
       "height": 400,
       "mark": {
         "type": "geoshape",
@@ -42,9 +40,17 @@
       ],
       "encoding": {
         "color": {
-          "field": "Total Deaths Per Million",
+          "field": ["Total Deaths Per Million"],
           "type": "quantitative",
-          "scale": {"type": "log", "scheme": "reds"}
+          "scale": {"type": "log", "scheme": "reds"},
+          "legend": {
+            "orient": "none",
+            "direction": "horizontal",
+            "legendX": 20,
+            "legendY": 310,
+            "gradientLength": 130,
+            "tickCount": 4
+          }
         },
         "fillOpacity": {
           "condition": {"param": "country_highlight", "value": 1},
@@ -70,7 +76,7 @@
     
     {
     "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
-    "width": 700,
+    "width": 850,
     "height": 125,
       "mark": "line",
       "transform": [
@@ -100,7 +106,7 @@
 
     {
       "data": {"url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"},
-      "width": 700,
+      "width": 850,
       "height": 300,
       "mark": "line",
       "transform": [
