@@ -139,10 +139,8 @@
   "config": {
     "background": "rgb(59, 59, 59)",
     "axis": {
-      "labelColor": "white",
-      "titleColor": "white",
       "gridColor": "dimgrey"
     },
-    "title": {"color": "white"}
+    "legend": {"labelColor": "white", "titleColor": "white"}
   }
 }
