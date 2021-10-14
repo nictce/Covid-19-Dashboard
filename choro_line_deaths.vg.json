@@ -14,8 +14,8 @@
 
   "vconcat": [
     {
-      "width": 800,
-      "height": 400,
+      "width": 850,
+      "height": 425,
       "projection": {"type": "equirectangular"},
       "data": {
         "url": "https://raw.githubusercontent.com/nictce/FIT3179-Assignment-2/main/data/worldmap.topojson",
