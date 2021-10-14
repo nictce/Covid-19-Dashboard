@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top 15 Countries with Highest Deaths Per Million",
-  "width": 500,
-  "height": 500,
+  "title": "Top Countries with Highest Deaths Per Million",
+  "width": 300,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
   },
@@ -24,6 +24,9 @@
       }
     }
   ],
+  "encoding": {
+
+  },
   "layer": [
     {
       "params": [{"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}],
@@ -38,6 +41,7 @@
           "field": "location",
           "title": "Country",
           "type": "nominal",
+          "axis": null,
           "sort": {
             "field": "Total Deaths Per Million",
             "op": "average",
@@ -46,8 +50,11 @@
         },
         "color": {
           "field": "continent",
-          "scale": {"scheme": "tableau10"},
-          "legend": {"title": "Continent"}
+          "scale": {
+            "domain": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
+            "range": ["#76b7b2", "#f28e2b", "#4e79a7", "#9c755f", "#e15759", "#edc948"]
+          },
+          "legend": {"title": "Continent", "orient": "bottom"}
         },
         "opacity": {"condition": {"param": "brush", "value": 1}, "value": 0.5},
         "tooltip": [
@@ -57,8 +64,7 @@
             "type": "quantitative",
             "title": "Total Cases Per Million"
           },
-          {"field": "Total Deaths Per Million", "type": "quantitative"},
-          {"field": "rank"}
+          {"field": "Total Deaths Per Million", "type": "quantitative"}
         ]
       }
     },
@@ -90,7 +96,7 @@
         },
         {"calculate": "'The selected countries have an average of '", "as": "text_annotation"}
       ],
-      "mark": {"type": "text", "align": "right", "dx": 235, "dy": 215},
+      "mark": {"type": "text", "align": "center", "dx": 0, "dy": 240},
       "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
     },
     {
@@ -108,8 +114,26 @@
         },
         {"calculate": "round(datum['mean_deaths']) + ' total deaths per million population.'", "as": "text_annotation"}
       ],
-      "mark": {"type": "text", "align": "right", "dx": 235, "dy": 230},
+      "mark": {"type": "text", "align": "center", "dx": 0, "dy": 255},
       "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
+    }, 
+    {
+      "mark": {"type": "text", "align": "left", "x": 5},
+      "encoding": {
+        "y": {
+          "field": "location",
+          "title": "Country",
+          "type": "nominal",
+          "axis": null,
+          "sort": {
+            "field": "Total Deaths Per Million",
+            "op": "average",
+            "order": "descending"
+          }
+        },
+        "text": {"field": "location"},
+        "color": {"value": "white"}
+      }
     }
   ],
   "config": {

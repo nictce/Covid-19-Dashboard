@@ -67,7 +67,10 @@
           "field": "continent",
           "type": "nominal",
           "title": "Continent",
-          "scale": {"scheme": "tableau10"}
+          "scale": {
+            "domain": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
+            "range": ["#76b7b2", "#f28e2b", "#4e79a7", "#9c755f", "#e15759", "#edc948"]
+          }
         },
         "opacity": {
           "condition": {"param": "continent_highlight", "value": 0.8},
