@@ -35,6 +35,7 @@
         "x": {
           "field": "Total Deaths Per Million",
           "type": "quantitative",
+          "title": null,
           "aggregate": "mean"
         },
         "y": {
@@ -54,17 +55,22 @@
             "domain": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
             "range": ["#76b7b2", "#f28e2b", "#4e79a7", "#9c755f", "#e15759", "#edc948"]
           },
-          "legend": {"title": "Continent", "orient": "bottom"}
+          "legend": {
+            "title": "Continent", "orient": "none", 
+            "columns": 3, "titleAnchor": "middle",
+            "legendX": 48, "legendY": 475
+          }
         },
         "opacity": {"condition": {"param": "brush", "value": 1}, "value": 0.5},
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {
-            "field": "total_cases_per_million",
+            "field": "total_deaths",
             "type": "quantitative",
-            "title": "Total Cases Per Million"
+            "title": "Total Deaths"
           },
-          {"field": "Total Deaths Per Million", "type": "quantitative"}
+          {"field": "Total Deaths Per Million", "type": "quantitative"},
+          {"field": "new_deaths_smoothed", "title": "New Deaths"}
         ]
       }
     },
@@ -135,5 +141,15 @@
         "color": {"value": "white"}
       }
     }
-  ]
+  ],
+  "config": {
+    "background": "rgb(59, 59, 59)",
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "gridColor": "dimgrey"
+    },
+    "legend": {"labelColor": "white", "titleColor": "white"},
+    "title": {"color": "white"}
+  }
 }
