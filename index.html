@@ -40,7 +40,7 @@
 
         <!-- top menu buttons and options -->
         <div class="pure-g">
-            <div class="pure-u-1-2" style="justify-content: left;">
+            <div class="pure-u-1-2" style="float: inline-start;">
                 <div class="pure-button-group" role="group">
                     <button id="cases" class="pure-button" onclick="clickTypeButton('Cases')" style="width: 100px; background-color: rgb(148, 148, 148); color: white;">Cases</button>
                     <button id="deaths" class="pure-button" onclick="clickTypeButton('Deaths')" style="width: 100px; background-color: rgb(148, 148, 148); color: white;">Deaths</button>
@@ -48,8 +48,8 @@
                 </div>
             </div>
             <div class="pure-u-3-8"></div>
-            <div class="pure-u-1-8 pure-form" style="justify-content: right;">
-                <select id="map_option" class="pure-input-1-1" onchange="clickTypeButton('')" style="min-width: 130px; width: 100px; background-color: rgb(148, 148, 148); color: white;">
+            <div class="pure-u-1-8 pure-form" style="float: inline-end;">
+                <select id="map_option" onchange="clickTypeButton('')" style="min-width: 120px; background-color: rgb(148, 148, 148); color: white;">
                     <option value="Total">Total</option>
                     <option value="New">New</option>
                 </select>
