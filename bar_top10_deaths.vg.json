@@ -7,10 +7,7 @@
     "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv"
   },
   "transform": [
-    {
-      "calculate": "toNumber(datum.total_deaths_per_million)",
-      "as": "Total Deaths Per Million"
-    },
+    {"calculate": "toNumber(datum.total_deaths_per_million)", "as": "Total Deaths Per Million"},
     {
       "window": [{"op": "rank", "as": "rank"}],
       "sort": [{"field": "Total Deaths Per Million", "order": "descending"}]
@@ -20,22 +17,16 @@
   ],
   "params": [
     {
-      "name": "top_n_rank",
-      "value": 15,
+      "name": "top_n_rank", "value": 15,
       "bind": {
-        "input": "range",
-        "min": 1,
-        "max": 40,
-        "step": 1,
+        "input": "range", "min": 1, "max": 40, "step": 1,
         "name": "Countries displayed: "
       }
     }
   ],
   "layer": [
     {
-      "params": [
-        {"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}
-      ],
+      "params": [{"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}],
       "mark": "bar",
       "encoding": {
         "x": {
@@ -58,7 +49,7 @@
           "scale": {"scheme": "tableau10"},
           "legend": {"title": "Continent"}
         },
-        "opacity": {"condition": {"param": "brush", "value": 1}, "value": 0.7},
+        "opacity": {"condition": {"param": "brush", "value": 1}, "value": 0.5},
         "tooltip": [
           {"field": "location", "type": "nominal", "title": "Country"},
           {
@@ -88,42 +79,46 @@
       "transform": [
         {"filter": {"param": "brush"}},
         {
-          "aggregate": [{
-          "op": "mean",
-          "field": "Total Deaths Per Million",
-          "as": "mean_deaths"
-          }],
-          "groupby": ["brush"]},
-        {
-          "calculate": "'The selected countries have an average of '",
-          "as": "text_annotation"
-        }
+          "aggregate": [
+            {
+              "op": "mean",
+              "field": "Total Deaths Per Million",
+              "as": "mean_deaths"
+            }
+          ],
+          "groupby": ["brush"]
+        },
+        {"calculate": "'The selected countries have an average of '", "as": "text_annotation"}
       ],
       "mark": {"type": "text", "align": "right", "dx": 235, "dy": 215},
-      "encoding": {"text": {"field": "text_annotation"}}
+      "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
     },
     {
       "transform": [
         {"filter": {"param": "brush"}},
         {
-          "aggregate": [{
-          "op": "mean",
-          "field": "Total Deaths Per Million",
-          "as": "mean_deaths"
-          }],
-          "groupby": ["brush"]},
-        {
-          "calculate": "round(datum['mean_deaths']) + ' total deaths per million population.'",
-          "as": "text_annotation"
-        }
+          "aggregate": [
+            {
+              "op": "mean",
+              "field": "Total Deaths Per Million",
+              "as": "mean_deaths"
+            }
+          ],
+          "groupby": ["brush"]
+        },
+        {"calculate": "round(datum['mean_deaths']) + ' total deaths per million population.'", "as": "text_annotation"}
       ],
       "mark": {"type": "text", "align": "right", "dx": 235, "dy": 230},
-      "encoding": {"text": {"field": "text_annotation"}}
+      "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
     }
   ],
   "config": {
-    "background":"rgb(59, 59, 59)",
-    "axis": {"labelColor": "white", "titleColor": "white", "gridColor":"dimgrey"},
+    "background": "rgb(59, 59, 59)",
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "gridColor": "dimgrey"
+    },
     "legend": {"labelColor": "white", "titleColor": "white"},
     "title": {"color": "white"}
   }
