@@ -167,7 +167,7 @@
     }
   ],
   "config": {
-    "background":"rgb(148, 148, 148)",
+    "background":"rgb(59, 59, 59)",
     "axis": {"labelColor": "white", "titleColor": "white"},
     "legend": {"labelColor": "white", "titleColor": "white"},
     "title": {"color": "white"}
