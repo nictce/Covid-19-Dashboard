@@ -168,7 +168,7 @@
   ],
   "config": {
     "background":"rgb(59, 59, 59)",
-    "axis": {"labelColor": "white", "titleColor": "white"},
+    "axis": {"labelColor": "white", "titleColor": "white", "gridColor":"dimgrey"},
     "legend": {"labelColor": "white", "titleColor": "white"},
     "title": {"color": "white"}
   }
