@@ -124,7 +124,7 @@
   "config": {
     "background":"rgb(148, 148, 148)",
     "axis": {"labelColor": "white", "titleColor": "white"},
-    "legend": {"labelColor": "white"},
+    "legend": {"labelColor": "white", "titleColor": "white"},
     "title": {"color": "white"}
   }
 }
