@@ -143,7 +143,6 @@
       "titleColor": "white",
       "gridColor": "dimgrey"
     },
-    "legend": {"labelColor": "white", "titleColor": "white"},
     "title": {"color": "white"}
   }
 }
