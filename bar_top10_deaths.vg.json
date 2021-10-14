@@ -55,11 +55,7 @@
             "domain": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
             "range": ["#76b7b2", "#f28e2b", "#4e79a7", "#9c755f", "#e15759", "#edc948"]
           },
-          "legend": {
-            "title": "Continent", "orient": "none", 
-            "columns": 3, "titleAnchor": "middle",
-            "legendX": 48, "legendY": 475
-          }
+          "legend": null
         },
         "opacity": {"condition": {"param": "brush", "value": 1}, "value": 0.5},
         "tooltip": [
