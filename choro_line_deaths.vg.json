@@ -165,5 +165,11 @@
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "background":"rgb(148, 148, 148)",
+    "axis": {"labelColor": "white", "titleColor": "white"},
+    "legend": {"labelColor": "white"},
+    "title": {"color": "white"}
+  }
 }

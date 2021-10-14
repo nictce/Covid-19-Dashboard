@@ -6,7 +6,6 @@
     },
     "title": "Daily Cases Around the World",
     "width": 580,
-    "config": {"view": {"strokeWidth": 0, "step": 13}, "axis": {"domain": false}},
     "transform": [{"filter": "datum.location == \"World\""}],
     "mark": "rect",
     "encoding": {
@@ -34,5 +33,12 @@
         {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
         {"field": "date", "type": "temporal", "title": "Date"}
       ]
+    },
+    "config": {
+      "view": {"strokeWidth": 0, "step": 13}, "axis": {"domain": false},
+      "background":"rgb(148, 148, 148)",
+      "axis": {"labelColor": "white", "titleColor": "white"},
+      "legend": {"labelColor": "white"},
+      "title": {"color": "white"}
     }
   }

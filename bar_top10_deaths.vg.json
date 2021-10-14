@@ -120,5 +120,11 @@
       "mark": {"type": "text", "align": "right", "dx": 235, "dy": 230},
       "encoding": {"text": {"field": "text_annotation"}}
     }
-  ]
+  ],
+  "config": {
+    "background":"rgb(148, 148, 148)",
+    "axis": {"labelColor": "white", "titleColor": "white"},
+    "legend": {"labelColor": "white"},
+    "title": {"color": "white"}
+  }
 }
