@@ -20,7 +20,7 @@
         "name": "top_n_rank", "value": 15,
         "bind": {
           "input": "range", "min": 1, "max": 40, "step": 1,
-          "name": "Countries displayed: "
+          "name": "Countries: "
         }
       }
     ],
