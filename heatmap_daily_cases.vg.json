@@ -1,51 +1,38 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 850,
+    "data": {
       "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
-  },
-  "title": "Daily Cases Around the World",
-  "width": 580,
-  "config": {
-      "view": {
-          "strokeWidth": 0,
-          "step": 13
-      },
-      "axis": {
-          "domain": false
-      }
-  },
-  "transform": [
-    {"filter": "datum.location == \"World\""}
-  ],
-  "mark": "rect",
-  "encoding": {
+    },
+    "title": "Daily Cases Around the World",
+    "width": 580,
+    "config": {"view": {"strokeWidth": 0, "step": 13}, "axis": {"domain": false}},
+    "transform": [{"filter": "datum.location == \"World\""}],
+    "mark": "rect",
+    "encoding": {
       "x": {
-          "field": "date",
-          "timeUnit": "week",
-          "type": "ordinal",
-          "title": "Week",
-          "axis": {
-              "labelAngle": 0,
-              "format": "%e"
-          }
+        "field": "date",
+        "timeUnit": "week",
+        "type": "ordinal",
+        "title": "Week",
+        "axis": {"labelAngle": 0, "format": "%e"}
       },
       "y": {
-          "field": "date",
-          "timeUnit": "day",
-          "type": "ordinal",
-          "title": "Day"
+        "field": "date",
+        "timeUnit": "day",
+        "type": "ordinal",
+        "title": "Day"
       },
       "color": {
-          "field": "new_cases",
-          "aggregate": "mean",
-          "type": "quantitative",
-          "legend": {
-              "title": null
-          }
+        "field": "new_cases",
+        "aggregate": "mean",
+        "type": "quantitative",
+        "legend": {"title": null},
+        "scale": {"scheme": "reds"}
       },
-    "tooltip": [
-      {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
-      {"field": "date", "type": "temporal", "title": "Date"}
-    ]
+      "tooltip": [
+        {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
+        {"field": "date", "type": "temporal", "title": "Date"}
+      ]
+    }
   }
-}
