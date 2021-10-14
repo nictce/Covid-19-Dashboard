@@ -93,7 +93,7 @@
             }
           ],
           "mark": {"type": "text", "align": "center", "dx": 0, "dy": 115},
-          "encoding": {"text": {"field": "text_annotation"}}
+          "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
         },
         {
           "transform": [
@@ -109,7 +109,7 @@
             }
           ],
           "mark": {"type": "text", "align": "center", "dx": 0, "dy": 130},
-          "encoding": {"text": {"field": "text_annotation"}}
+          "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
         }
       ]
     },
