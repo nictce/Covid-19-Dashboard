@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Countries with Highest Cases Per Million",
+    "title": "Top Cases Per Million",
     "width": 300,
     "height": 400,
     "data": {

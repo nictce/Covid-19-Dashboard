@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Countries with Highest Deaths Per Million",
+  "title": "Top Deaths Per Million",
   "width": 300,
   "height": 400,
   "data": {
