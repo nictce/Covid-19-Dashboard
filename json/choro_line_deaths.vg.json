@@ -54,8 +54,8 @@
               "legend": {
                 "orient": "none",
                 "direction": "horizontal",
-                "legendX": 10,
-                "legendY": 325,
+                "legendX": 5,
+                "legendY": 315,
                 "gradientLength": 130,
                 "tickCount": 4
               }
@@ -92,7 +92,7 @@
               "select": {"type": "point", "fields": ["location"]}
             }
           ],
-          "mark": {"type": "text", "align": "center", "dx": 0, "dy": 115},
+          "mark": {"type": "text", "align": "center", "dx": 10, "dy": 120},
           "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
         },
         {
@@ -108,7 +108,7 @@
               "as": "text_annotation"
             }
           ],
-          "mark": {"type": "text", "align": "center", "dx": 0, "dy": 130},
+          "mark": {"type": "text", "align": "center", "dx": 10, "dy": 135},
           "encoding": {"text": {"field": "text_annotation"}, "color": {"value": "white"}}
         }
       ]
