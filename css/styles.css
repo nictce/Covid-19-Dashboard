@@ -5,6 +5,9 @@ BODY, H1, H2, H3, H4, H5, H6, TH, TD{
 h1{
     font-weight: 600;
 }
+a{
+    color: rgb(76, 204, 226);
+}
 body{
     /* background-image: url('data/virus_bg.jpg');  */
     background-repeat: no-repeat; 
