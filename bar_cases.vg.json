@@ -146,6 +146,6 @@
         "gridColor": "dimgrey"
       },
       "legend": {"labelColor": "white", "titleColor": "white"},
-      "title": {"color": "white", "fontSize": 20, "dy": -7}
+      "title": {"color": "white", "fontSize": 18, "dy": -7}
     }
   }
