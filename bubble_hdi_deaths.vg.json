@@ -7,20 +7,20 @@
   },
   "params": [
     {
-      "name": "total_cases_above",
+      "name": "population_above",
       "value": 0,
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 5000000,
+        "max": 100000000,
         "step": 100,
-        "name": "Total Cases: "
+        "name": "Population: "
       }
     }
   ],
   "transform": [
-    {"filter": "datum.continent != \"\""},
-    {"filter": "datum.total_cases > total_cases_above"},
+    {"filter": "datum.continent != ''"},
+    {"filter": "datum.population > population_above"},
     {"calculate": "toNumber(datum.total_cases_per_million) + 1", "as": "Total Cases Per Million"},
     {"calculate": "toNumber(datum.total_deaths_per_million) + 1", "as": "Total Deaths Per Million"},
     {"calculate": "toNumber(datum.people_fully_vaccinated_per_hundred)", "as": "Fully Vaccinated Percentage"},
@@ -89,7 +89,10 @@
             "type": "quantitative",
             "title": "Total Cases"
           },
-          {"field": "Total Cases Per Million", "type": "quantitative"}
+          {
+            "field": "total_cases_per_million", 
+            "title": "Total Cases Per Million", 
+            "type": "quantitative"}
         ]
       }
     },

@@ -240,7 +240,8 @@
             button = type == '' ? button : type
             mapOption = document.getElementById("map_option").value
             if(button == "Cases"){
-                bubbleField = "Total Cases Per Million"
+                bubbleField1 = "Total Cases Per Million"
+                bubbleField2 = "total_cases_per_million"
                 lineField1 = "new_cases_smoothed"
                 lineField2 = "New Cases"
                 if(mapOption == "Total"){
@@ -254,7 +255,8 @@
                 }
                 // lineField = "New Cases"
             } else if(button == "Deaths"){
-                bubbleField = "Total Deaths Per Million"
+                bubbleField1 = "Total Deaths Per Million"
+                bubbleField2 = "total_deaths_per_million"
                 lineField1 = "new_deaths_smoothed"
                 lineField2 = "New Deaths"
                 if(mapOption == "Total"){
@@ -268,7 +270,8 @@
                 }
                 // lineField = "New Deaths"
             } else if(button == "Vaccinations"){
-                bubbleField = "Fully Vaccinated Percentage"
+                bubbleField1 = "Fully Vaccinated Percentage"
+                bubbleField2 = "people_fully_vaccinated_per_hundred"
                 lineField1 = "new_vaccinations_smoothed"
                 lineField2 = "New Vaccinations"
                 if(mapOption == "Total"){
@@ -282,13 +285,14 @@
                 }
                 // lineField = "New Vaccinations"
             }
-            // console.log(bubbleField)
+            // console.log(bubbleField1)
             // console.log(bubblePlot)
             // console.log(linePlot)
 
             // bubble plot
-            bubblePlot["encoding"]["y"]["field"] = bubbleField
-            bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField
+            bubblePlot["encoding"]["y"]["field"] = bubbleField1
+            bubblePlot["layer"][0]["encoding"]["tooltip"][4]["title"] = bubbleField1
+            bubblePlot["layer"][0]["encoding"]["tooltip"][4]["field"] = bubbleField2
             bubblePlot["encoding"]["y"]["scale"]["type"] = button == "Vaccinations" ? "linear" : "log"
             refreshIdiom("#bubble_plot", bubblePlot)
             
