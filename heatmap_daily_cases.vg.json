@@ -5,33 +5,117 @@
     "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
   },
   "transform": [{"filter": "datum.location == 'World'"}],
-  "mark": "rect",
-  "encoding": {
-    "x": {
-      "field": "date",
-      "timeUnit": "week",
-      "type": "ordinal",
-      "title": "Week",
-      "axis": {"labelAngle": 0, "format": "%B"}
+  "layer": [
+    {
+      "mark": "rect",
+      "encoding": {
+        "x": {
+          "field": "date",
+          "timeUnit": "week",
+          "type": "ordinal",
+          "title": "Week",
+          "axis": {"labelAngle": 0, "format": "%B"}
+        },
+        "y": {
+          "field": "date",
+          "timeUnit": "day",
+          "type": "ordinal",
+          "title": "Day"
+        },
+        "color": {
+          "field": "new_cases",
+          "aggregate": "mean",
+          "type": "quantitative",
+          "legend": {"title": null, "tickCount": 5},
+          "scale": {"scheme": "reds"}
+        },
+        "tooltip": [
+          {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
+          {"field": "date", "type": "temporal", "title": "Date", "format": "%d %b"}
+        ]
+      }
     },
-    "y": {
-      "field": "date",
-      "timeUnit": "day",
-      "type": "ordinal",
-      "title": "Day"
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "new_cases",
+              "as": "max_cases"
+            }
+          ]
+        }
+      ],
+      "mark": "rule",
+      "encoding": {
+        "x": {"value": 273},
+        "y": {"value": -35},
+        "x2": {"value": 273},
+        "y2": {"value": 46},
+        "color": {"value": "white"},
+        "strokeWidth": {"value": 2}
+      }
     },
-    "color": {
-      "field": "new_cases",
-      "aggregate": "mean",
-      "type": "quantitative",
-      "legend": {"title": null, "tickCount": 5},
-      "scale": {"scheme": "reds"}
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "new_cases",
+              "as": "max_cases"
+            }
+          ]
+        }
+      ],
+      "mark": {"type": "text", "align": "left", "dx": -132, "dy": -73},
+      "encoding": {
+        "color": {"value": "white"},
+        "text": {"value": ["Most - 28 Apr 21", "905995 new cases"]}
+      }
     },
-    "tooltip": [
-      {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
-      {"field": "date", "type": "temporal", "title": "Date", "format": "%d %b"}
-    ]
-  },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "new_cases",
+              "as": "min_cases"
+            }
+          ]
+        }
+      ],
+      "mark": "rule",
+      "encoding": {
+        "x": {"value": 117},
+        "y": {"value": -35},
+        "x2": {"value": 117},
+        "y2": {"value": 20},
+        "color": {"value": "white"},
+        "strokeWidth": {"value": 2}
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "new_cases",
+              "as": "min_cases"
+            }
+          ]
+        }
+      ],
+      "mark": {"type": "text", "align": "left", "dx": -288, "dy": -73},
+      "encoding": {
+        "color": {"value": "white"},
+        "text": {"value": ["Least - 15 Feb 21", "283317 new cases"]}
+      }
+    }
+  ],
   "config": {
     "view": {"strokeWidth": 0, "step": 13},
     "axis": {"domain": false, "labelColor": "white", "titleColor": "white"},
