@@ -1,8 +1,10 @@
-BODY, H1, H2, H3, H4, H5, H6, TH, TD{
+BODY, H2, H3, H4, H5, H6, TH, TD{
     font-family: 'Source Sans Pro', sans-serif;
     color: white;
 }
 h1{
+    font-family: 'Special Elite', cursive;
+    color: white;
     font-weight: 600;
 }
 a{
