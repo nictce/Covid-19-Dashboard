@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 850,
+  "width": 825,
   "data": {
     "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
   },

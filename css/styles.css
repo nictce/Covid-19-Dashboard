@@ -108,6 +108,7 @@ body {
 }
 .ins {
     font-style: italic;
+    color: lightgray;
 }
 .info {
     font-size: 9pt;
