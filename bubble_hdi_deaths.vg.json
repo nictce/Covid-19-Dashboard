@@ -35,7 +35,7 @@
   "encoding": {
     "x": {"field": "Human Development Index", "type": "quantitative"},
     "y": {
-      "field": "Total Deaths Per Million",
+      "field": "Total Cases Per Million",
       "type": "quantitative",
       "axis": {"tickCount": 4},
       "scale": {"type": "log"}
@@ -89,7 +89,7 @@
             "type": "quantitative",
             "title": "Total Cases"
           },
-          {"field": "Total Deaths Per Million", "type": "quantitative"}
+          {"field": "Total Cases Per Million", "type": "quantitative"}
         ]
       }
     },
