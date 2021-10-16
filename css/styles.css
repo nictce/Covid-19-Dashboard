@@ -11,11 +11,23 @@ a {
     color: rgb(76, 204, 226);
 }
 body {
-    /* background-image: url('data/virus_bg.jpg');  */
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: top;
     background-color: rgb(172, 14, 14);
+}
+.page-title {
+    font-size: 30pt;
+    font-weight: 800pt;
+    color: white;
+    font-family: 'DM Serif Display', serif;
+    margin-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.page-title-box {
+    background-color: rgb(172, 14, 14); 
+    border-radius: 10px;
 }
 .page {
     width: 950px;    
