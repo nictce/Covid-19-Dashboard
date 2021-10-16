@@ -39,7 +39,7 @@
         <div class="pure-g">
             <div class="pure-u-1-1" style="justify-content: center;">
                 <h1 style="color: rgb(218, 31, 31); text-align: center; font-size:50pt; margin-top: 15px;">COVID-19 at a glance</h1>
-                <p>Just how deeply has COVID-19 impacted the populations of different countries, and what factors contribute to a high mortality?</p>
+                <p>Just how deeply has <span class="covid">COVID-19</span> impacted the populations of different countries, and what factors contribute to a high mortality?</p>
             </div>
         </div>
     </div>
@@ -51,6 +51,7 @@
         <div class="pure-g">
             <div class="pure-u-1-1">
                 <h2>So, How's The World Looking?</h2>
+                <p class="ins">Click on several countries (by holding Shift) to see how they fared throughout the pandemic!</p>
             </div>
             <div class="pure-u-1-2" style="float: inline-start;">
                 <div class="pure-button-group" role="group">
@@ -81,8 +82,9 @@
             </div>
             <div class="pure-u-1-3">
                 <div class="description description-right">
-                    <h2>Comparing HDI with population deaths</h2>
-                    <p>From this diagram, we can see that there is a positive correlation where countries that are more developed, or have a higher human development index, somehow tend to have more deaths per million population. On the other hand, countries in poorer continents such as Africa and Asia tend to have a lower number of deaths per million population. </p>
+                    <h2>Do country statistics help to bear the brunt of COVID-19?</h2>
+                    <p>From this diagram, we can see that there is a positive correlation where countries that are more developed tend to have more cases and deaths per million population. On the other hand, LDCs (Less Developed Countries) in Africa and Asia tend to have a lower number of deaths per million population. This could be explained by under-reporting of cases due to lower testing capacities, lower population density in rural areas (where most of LDC populations live), and higher proportion of young people that are more resilient to infection. </p>
+                    <p class="ins">Click on a continent in the legend to filter the plot or scroll to zoom in on the clusters!</p>
                 </div>
                 <div class="pure-form" style="justify-content: right;">
                     <select id="bubble_option" class="pure-input-1-1" onchange="changeBubbleOption()" style="min-width: 280px; background-color: rgb(148, 148, 148); color: white; margin-left: 20px;">
@@ -103,6 +105,7 @@
         <div class="pure-g">
             <div class="pure-u-1-1">
                 <h2>The Top (or Worst!) Country Statistics</h2>
+                <p class="ins">Use a brush to view the average statistic of adjacent countries and watch how the average line changes for the different rankings!</p>
             </div>
             <div class="pure-u-1-3">
                 <div id="bar_cases" class="vis-container"></div>
@@ -113,6 +116,10 @@
             <div class="pure-u-1-3">
                 <div id="bar_vax" class="vis-container"></div>
             </div>
+
+            <div class="pure-u-1-1">
+                <h2>Where does Malaysia stand in all this?</h2>
+            </div>
         </div>
     </div>
 
@@ -122,6 +129,7 @@
         <div class="pure-g">
             <div class="pure-u-1-1">
                 <h2>How Are COVID-19 Cases Contracted?</h2>
+                <p>The heatmap below shows that most contractions of new cases are concentrated during the weekdays. Furthermore, there is a repeating pattern of cases rising and falling, which could likely be related to countries implementing lockdowns and then lifting restrictions every few months. </p>
             </div>
             <div class="pure-u-1-1">
                 <div id="heatmap_daily_cases" class="vis-container"></div>
@@ -191,7 +199,7 @@
         let mapLine = getJson("./choro_line_deaths.vg.json")
         // let linePlot = getJson("./line_brush_deaths.vg.json")
         
-        function toggleIdiom(id, cls) {
+        function toggleDiv(id, cls) {
             var target = document.getElementById(id);
             var allDivs = document.getElementsByClassName(cls);
             for (i=0; i < allDivs.length; i++) {
