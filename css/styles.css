@@ -79,11 +79,13 @@ body {
 .good {
     font-weight: bold;
     font-size: 13pt;
-    color: rgb(43, 172, 49);
+    /* color: rgb(43, 172, 49); */
+    color: rgb(31, 218, 140);
 }
 .bold {
     font-weight: 700;
     font-size: 13pt;
+    color: wheat;
 }
 .NA {
     font-weight: bold;
