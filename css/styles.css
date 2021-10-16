@@ -97,3 +97,9 @@ body {
 .ins {
     font-style: italic;
 }
+.info {
+    font-size: 9pt;
+    font-style: italic;
+    margin: 0pt;
+    text-align: right;
+}
