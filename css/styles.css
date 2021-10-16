@@ -54,7 +54,7 @@ body {
     padding-right: 20px;
 }
 .pure-g {
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     justify-content: center;
 }
 .small-font {
@@ -109,6 +109,7 @@ body {
 .ins {
     font-style: italic;
     color: lightgray;
+    margin-left: 5px;
 }
 .info {
     font-size: 9pt;
