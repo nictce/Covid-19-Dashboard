@@ -1,42 +1,42 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 850,
-    "data": {
-      "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 850,
+  "data": {
+    "url": "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
+  },
+  "transform": [{"filter": "datum.location == 'World'"}],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "date",
+      "timeUnit": "week",
+      "type": "ordinal",
+      "title": "Week",
+      "axis": {"labelAngle": 0, "format": "%B"}
     },
-    "transform": [{"filter": "datum.location == \"World\""}],
-    "mark": "rect",
-    "encoding": {
-      "x": {
-        "field": "date",
-        "timeUnit": "week",
-        "type": "ordinal",
-        "title": "Week",
-        "axis": {"labelAngle": 0, "format": "%B"}
-      },
-      "y": {
-        "field": "date",
-        "timeUnit": "day",
-        "type": "ordinal",
-        "title": "Day"
-      },
-      "color": {
-        "field": "new_cases",
-        "aggregate": "mean",
-        "type": "quantitative",
-        "legend": {"title": null},
-        "scale": {"scheme": "reds"}
-      },
-      "tooltip": [
-        {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
-        {"field": "date", "type": "temporal", "title": "Date"}
-      ]
+    "y": {
+      "field": "date",
+      "timeUnit": "day",
+      "type": "ordinal",
+      "title": "Day"
     },
-    "config": {
-      "view": {"strokeWidth": 0, "step": 13}, 
-      "axis": {"domain": false, "labelColor": "white", "titleColor": "white"},
-      "background":"rgb(59, 59, 59)",
-      "legend": {"labelColor": "white", "titleColor": "white"},
-      "title": {"color": "white"}
-    }
+    "color": {
+      "field": "new_cases",
+      "aggregate": "mean",
+      "type": "quantitative",
+      "legend": {"title": null, "tickCount": 5},
+      "scale": {"scheme": "reds"}
+    },
+    "tooltip": [
+      {"field": "mean_new_cases", "type": "quantitative", "title": "New Cases"},
+      {"field": "date", "type": "temporal", "title": "Date", "format": "%d %b"}
+    ]
+  },
+  "config": {
+    "view": {"strokeWidth": 0, "step": 13},
+    "axis": {"domain": false, "labelColor": "white", "titleColor": "white"},
+    "background": "rgb(59, 59, 59)",
+    "legend": {"labelColor": "white", "titleColor": "white"},
+    "title": {"color": "white"}
   }
+}
