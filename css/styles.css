@@ -69,41 +69,50 @@ body {
 }
 .hl {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
 }
 .covid {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: rgb(218, 31, 31);
+}
+.good {
+    font-weight: bold;
+    font-size: 13pt;
+    color: rgb(43, 172, 49);
+}
+.bold {
+    font-weight: 700;
+    font-size: 13pt;
 }
 .NA {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #76b7b2;
 }
 .SA {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #f28e2b;
 }
 .EU {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #4e79a7;
 }
 .AF {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #9c755f;
 }
 .AS {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #e15759;
 }
 .OC {
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 13pt;
     color: #edc948;
 }
 .ins {
