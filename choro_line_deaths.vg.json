@@ -106,7 +106,7 @@
             },
             {"filter": "datum.ranking == 1"},
             {
-              "calculate": "datum['Total Cases Per Million'] + ' cases per million population as of ' + datum.last_updated_date + '.'",
+              "calculate": "datum['Total Cases Per Million']-1 + ' cases per million population as of ' + datum.last_updated_date + '.'",
               "as": "text_annotation"
             }
           ],
