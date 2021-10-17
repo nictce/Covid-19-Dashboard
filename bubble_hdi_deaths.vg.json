@@ -28,7 +28,7 @@
     {"calculate": "toNumber(datum.human_development_index)", "as": "Human Development Index"},
     {"calculate": "toNumber(datum.gdp_per_capita)", "as": "GDP Per Capita"},
     {"calculate": "toNumber(datum.life_expectancy)", "as": "Life Expectancy"},
-    {"calculate": "toNumber(datum.population_density)", "as": "Population Density"},
+    {"calculate": "toNumber(datum.median_age)", "as": "Median Age"},
     {"calculate": "toNumber(datum.stringency_index)", "as": "Stringency Index"},
     {"calculate": "toNumber(datum.total_deaths) / toNumber(datum.total_cases) * 100", "as": "Mortality Rate"}
   ],
