@@ -67,7 +67,7 @@
             "font": "Helvetica Neue, Arial",
             "fontSize": {"field": "datum.count"},
             "fontWeight": {"field": "datum.weight"},
-            "fontSizeRange": [12, 56],
+            "fontSizeRange": [17, 70],
             "padding": 2
           }
         ]
