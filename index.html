@@ -116,12 +116,6 @@
             <div class="pure-u-1-3">
                 <div id="bar_vax" class="vis-container"></div>
             </div>
-
-            <!-- <div class="pure-u-1-1">
-                <div class="pure-u-1-1 page-title-box">
-                    <h2 class="page-title">Where Does Malaysia Stand In All This?</h2>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -163,37 +157,17 @@
 
     <script type="text/javascript">
 
-        var vg_1 = "choro_world_deaths.vg.json";
         var vg_2 = "bubble_hdi_deaths.vg.json";
-        var vg_3 = "choro_repeated.vg.json";
         var vg_4 = "bar_top10_deaths.vg.json";
-        var vg_5 = "line_new_deaths.vg.json";
         var vg_6 = "heatmap_daily_cases.vg.json";
-        var vg_7 = "bubble_cases_deaths.vg.json";
-        var vg_8 = "line_total_deaths.vg.json";
-        var vg_9 = "choro_world_cases.vg.json";
-        var vg_10 = "choro_world_vax.vg.json";
-        var vg_11 = "line_brush_cases.vg.json";
-        var vg_12 = "line_brush_deaths.vg.json";
-        var vg_13 = "line_brush_vax.vg.json";
         var vg_14 = "choro_line_deaths.vg.json";
         var vg_15 = "bar_cases.vg.json";
         var vg_16 = "bar_vax.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        // vegaEmbed("#choro_world_deaths", vg_1).then(function(result) {}).catch(console.error);
         vegaEmbed("#bubble_plot", vg_2).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#choro_repeated", vg_3).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#line_new_deaths", vg_5).then(function(result) {}).catch(console.error);
         vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#bubble_cases_deaths", vg_7).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#line_total_deaths", vg_8).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#choro_world_cases", vg_9).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#choro_world_vax", vg_10).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#line_brush_cases", vg_11).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#line_brush_deaths", vg_12).then(function(result) {}).catch(console.error);
-        // vegaEmbed("#line_brush_vax", vg_13).then(function(result) {}).catch(console.error);
         vegaEmbed("#choro_line_deaths", vg_14).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_cases", vg_15).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_vax", vg_16).then(function(result) {}).catch(console.error);
@@ -202,14 +176,10 @@
 
     <script type="text/javascript">
 
-
-        // let choro = "choro_world_cases"
-        // let bubble = "bubble_plot"
         let button = "Cases"
         let mapOption = "Total"
         let bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
         let mapLine = getJson("./choro_line_deaths.vg.json")
-        // let linePlot = getJson("./line_brush_deaths.vg.json")
         
         function toggleDiv(id, cls) {
             var target = document.getElementById(id);
@@ -247,7 +217,6 @@
                     caption1 = "datum.location + ' has the highest infection rate with a total of '"
                     caption2 = "datum['New Cases Per Million'] + ' new cases per million population on ' + datum.last_updated_date + '.'"
                 }
-                // lineField = "New Cases"
             } else if(button == "Deaths"){
                 bubbleField1 = "Total Deaths Per Million"
                 bubbleField2 = "total_deaths_per_million"
@@ -262,7 +231,6 @@
                     caption1 = "datum.location + ' currently has the highest death rate with a total of '"
                     caption2 = "datum['New Deaths Per Million'] + ' new deaths per million population on ' + datum.last_updated_date + '.'"
                 }
-                // lineField = "New Deaths"
             } else if(button == "Vaccinations"){
                 bubbleField1 = "Fully Vaccinated Percentage"
                 bubbleField2 = "people_fully_vaccinated_per_hundred"
@@ -277,11 +245,7 @@
                     caption1 = "datum.location + ' currently has the highest vaccination rate with'"
                     caption2 = "datum['New Vaccinations Per Million'] + ' new vaccinations given out on ' + datum.last_updated_date + '.'"
                 }
-                // lineField = "New Vaccinations"
             }
-            // console.log(bubbleField1)
-            // console.log(bubblePlot)
-            // console.log(linePlot)
 
             // bubble plot
             bubblePlot["encoding"]["y"]["field"] = bubbleField1
@@ -327,48 +291,12 @@
             mapLine["vconcat"][1]["encoding"]["y"]["field"] = lineField1
             mapLine["vconcat"][1]["encoding"]["y"]["title"] = lineField2
             mapLine["vconcat"][2]["encoding"]["y"]["field"] = lineField1
-            mapLine["vconcat"][2]["encoding"]["y"]["title"] = lineField2
-
-            // console.log(mapField)
-            // console.log(caption1)
-            // console.log(caption2)
-            // console.log(mapLine)
-            // console.log(button)
-            // console.log(button)
-            // console.log(mapOption)
-            
+            mapLine["vconcat"][2]["encoding"]["y"]["title"] = lineField2            
             refreshIdiom("#choro_line_deaths", mapLine)
-            // linePlot["transform"][2]["filter"] = button == "Vaccinations" ? "datum.new_vaccinations_smoothed > 0" : "datum.new_vaccinations_smoothed >= 0"
-            // linePlot["vconcat"][0]["encoding"]["y"]["field"] = lineField
-            // linePlot["vconcat"][0]["encoding"]["tooltip"][3]["field"] = lineField
-            // linePlot["vconcat"][1]["encoding"]["y"]["field"] = lineField
-            // linePlot["vconcat"][1]["encoding"]["tooltip"][3]["field"] = lineField
-            // refreshIdiom("#line_brush_deaths", linePlot)
-        }
-
-        function changeMapOption() {
-            // choropleth = getJson("./choro_world_cases.vg.json")
-            mapOption = document.getElementById("map_option").value
-            // console.log(option)
-            if(option == "Total " && button == "Vaccinations"){
-                mapField = "Fully Vaccinated Percentage"
-            } else {
-                mapField = option + button + " Per Million"
-            }
-            // console.log(mapField)
-            // choropleth[""]
-
-
-            // bubblePlot["encoding"]["y"]["field"] = bubbleField
-            // bubblePlot["layer"]["encoding"]["tooltip"][4]["field"] = bubbleField
-            // refreshIdiom("#bubble_plot", bubblePlot)
         }
 
         function changeBubbleOption() {
-            // bubblePlot = getJson("./bubble_hdi_deaths.vg.json")
             let option = document.getElementById("bubble_option").value
-            // console.log(bubblePlot)
-            // console.log(option)
             bubblePlot["encoding"]["x"]["field"] = option
             bubblePlot["layer"][0]["encoding"]["tooltip"][2]["field"] = option
             refreshIdiom("#bubble_plot", bubblePlot)
