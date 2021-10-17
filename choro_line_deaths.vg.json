@@ -43,10 +43,12 @@
       ],
       "layer": [
         {
+          "params": [{"name": "pts", "select": {"type": "point", "on": "mouseover"}}],
           "mark": {
             "type": "geoshape"
           },
           "encoding": {
+            "stroke": {"condition": {"param": "pts", "empty": false, "value": "white"}},
             "color": {
               "field": "Total Cases Per Million",
               "type": "quantitative",
