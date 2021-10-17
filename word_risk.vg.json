@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 550,
+    "width": 850,
     "height": 330,
     "padding": 0,
   
@@ -67,7 +67,7 @@
             "font": "Helvetica Neue, Arial",
             "fontSize": {"field": "datum.count"},
             "fontWeight": {"field": "datum.weight"},
-            "fontSizeRange": [8, 40],
+            "fontSizeRange": [12, 56],
             "padding": 2
           }
         ]
