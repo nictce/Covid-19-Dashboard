@@ -133,6 +133,9 @@
                 <div id="heatmap_daily_cases" class="vis-container"></div>
             </div>
             <div class="pure-u-1-1">
+                <div id="word_risk" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-1">
                 <!-- <p>These waves could also be related to <span class="bold">countries implementing lockdowns then lifting restrictions</span> every few months in efforts to revive the economy, as people get fatigued about maintaining social distance. </p> -->
                 <p>In conclusion, do not hesitate to register yourself for a <span class="good">COVID-19 Vaccination</span> and always make sure to be more cautious about going out during the weekdays!</p>
             </div>
@@ -163,6 +166,7 @@
         var vg_14 = "choro_line_deaths.vg.json";
         var vg_15 = "bar_cases.vg.json";
         var vg_16 = "bar_vax.vg.json";
+        var vg_17 = "word_risk.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         vegaEmbed("#bubble_plot", vg_2).then(function(result) {}).catch(console.error);
@@ -171,6 +175,7 @@
         vegaEmbed("#choro_line_deaths", vg_14).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_cases", vg_15).then(function(result) {}).catch(console.error);
         vegaEmbed("#bar_vax", vg_16).then(function(result) {}).catch(console.error);
+        vegaEmbed("#word_risk", vg_17).then(function(result) {}).catch(console.error);
 
     </script>
 
