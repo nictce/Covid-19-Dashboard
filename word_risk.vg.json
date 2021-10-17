@@ -26,7 +26,7 @@
           },
           {
             "type": "formula", "as": "weight",
-            "expr": "if(datum.count==20, 600, 300)"
+            "expr": "if(datum.count>=10, 600, 300)"
           }
         ]
       }
