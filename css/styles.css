@@ -68,7 +68,7 @@ body {
     font-weight: bold;
     font-size: 13pt;
 }
-.covid {
+/* .covid {
     font-weight: bold;
     font-size: 13pt;
     color: rgb(218, 31, 31);
@@ -76,15 +76,14 @@ body {
 .good {
     font-weight: bold;
     font-size: 13pt;
-    /* color: rgb(43, 172, 49); */
     color: rgb(31, 218, 140);
 }
 .bold {
     font-weight: 700;
     font-size: 13pt;
     color: wheat;
-}
-.NA {
+} */
+/* .NA {
     font-weight: bold;
     font-size: 13pt;
     color: #76b7b2;
@@ -113,7 +112,7 @@ body {
     font-weight: bold;
     font-size: 13pt;
     color: #edc948;
-}
+} */
 .ins {
     font-style: italic;
     color: lightgray;

@@ -80,7 +80,7 @@
             </div>
             <div class="pure-u-9-24">
                 <div class="description description-right">
-                    <h2 style="font-family: DM Serif Display; font-size: 20pt;">Do <span style="font-weight: 900; font-size: 23pt; color: wheat;">Country Statistics</span> help to bear the brunt of     <span class="covid" style="font-size: 23pt;">COVID-19</span>?</h2>
+                    <h2 style="font-family: DM Serif Display; font-size: 20pt;">Do <span style="font-weight: 900; font-size: 23pt; ">Country Statistics</span> help to bear the brunt of     <span class="covid" style="font-size: 23pt;">COVID-19</span>?</h2>
                     <p>From this diagram, we can see that there is a positive correlation where <span class="bold">MDC</span>s (More Developed Countries) such as <span class="EU">Europe</span> and <span class="NA">North America</span> tend to have <span class="covid">more cases and deaths</span> per million population. On the other hand, <span class="bold">LDC</span>s (Less Developed Countries) in <span class="AF">Africa</span> and <span class="AS">Asia</span> tend to have a <span class="good">lower number of deaths</span> per million population. This could be explained by the under-reporting of cases due to <span class="bold">lower testing capacities</span>, <span class="bold">lower population density</span> in rural areas (where most of LDC populations live), and <span class="bold">higher proportions of young people</span> that are more resilient to infection. </p>
                     <p class="ins">Click on a continent in the legend to filter the plot or scroll to zoom in on the clusters!</p>
                 </div>
@@ -172,13 +172,13 @@
         var vg_17 = "word_risk.vg.json";
 
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        vegaEmbed("#bubble_plot", vg_2).then(function(result) {}).catch(console.error);
-        vegaEmbed("#bar_top10_deaths", vg_4).then(function(result) {}).catch(console.error);
-        vegaEmbed("#heatmap_daily_cases", vg_6).then(function(result) {}).catch(console.error);
-        vegaEmbed("#choro_line_deaths", vg_14).then(function(result) {}).catch(console.error);
-        vegaEmbed("#bar_cases", vg_15).then(function(result) {}).catch(console.error);
-        vegaEmbed("#bar_vax", vg_16).then(function(result) {}).catch(console.error);
-        vegaEmbed("#word_risk", vg_17).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bubble_plot", vg_2, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bar_top10_deaths", vg_4, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#heatmap_daily_cases", vg_6, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#choro_line_deaths", vg_14, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bar_cases", vg_15, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#bar_vax", vg_16, {"actions": false}).then(function(result) {}).catch(console.error);
+        vegaEmbed("#word_risk", vg_17, {"actions": false}).then(function(result) {}).catch(console.error);
 
     </script>
 
